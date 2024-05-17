@@ -1,22 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Accueil from './accueil.jsx';
+import RegisterForm from './LoginPage/RegisterForm.jsx';
+import LoginForm from './LoginPage/LoginForm.jsx';
+import CategoryPage from './ProduitList.jsx';
+import Navbar from './nav.jsx';
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Navbar />
+
+        {/* <Accueil />  */}
+        {/* <RegisterForm /> */}
+        {/* <LoginForm /> */}
+        <CategoryPage /> 
+
       </header>
     </div>
   );
