@@ -1,0 +1,213 @@
+  /* .home-page {
+    font-family: Arial, sans-serif;
+    color: beige;
+  }
+  
+  .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .hero-content {
+    flex: 1;
+    padding: 0 50px;
+  }
+  
+  .hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: white;
+  }
+  
+  .hero p {
+    font-size: 20px;
+    margin-bottom: 40px;
+    color: white;
+    opacity: 0.8;
+  }
+  
+  .cta-button {
+    font-size: 20px;
+    padding: 12px 30px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .carousel {
+    display: flex;
+    overflow-x: auto;
+    height: 300px;
+    padding: 20px;
+  }
+  
+  .carousel-item {
+    flex: 1;
+    margin-right: 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-sizing: border-box;
+    min-width: 300px;
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .carousel-item h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .carousel-item p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+  } */
+
+  /* ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  } */
+  
+  /* li {
+    float: right;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+   */
+  /* Change the link color to #111 (black) on hover */
+  /* li a:hover {
+    background-color: #111;
+  }  */
+
+  /* .categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; /* Ou autre alignement souhaité */
+  /* } */
+  
+  /* .categorie {
+    width: 33%; 
+    text-align: center;
+    padding: 10px; Ou autre padding souhaité
+  } */
+
+
+  body {
+    margin: 0;
+    font-family: sans-serif;
+  }
+  
+  .home-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Menu styles */
+  .navigation {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0; /* Light gray background */
+    padding: 10px 20px;
+  }
+  
+  .navigation li {
+    margin: 0 10px;
+  }
+  
+  .navigation a {
+    text-decoration: none;
+    color: #333; /* Dark gray text */
+    font-weight: bold;
+  }
+  
+  /* Main carousel styles */
+  .main-carousel {
+    margin-top: 20px;
+  }
+  
+  .main-carousel img {
+    width: 100%;
+    height: 400px; /* Adjust height as needed */
+    object-fit: cover;
+  }
+  
+  .carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    padding: 10px;
+  }
+  
+  /* Category carousel styles */
+  .category-carousel {
+    margin-top: 20px;
+  }
+
+  /* Category carousel styles (continued) */
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.category h3 {
+  margin-bottom: 5px;
+}
+
+/* Responsive adjustments (optional) */
+@media (max-width: 768px) {
+  .navigation {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navigation li {
+    margin: 5px 0;
+  }
+}
+
+.category-squares {
+  display: flex; /* Arrange squares horizontally */
+  justify-content: space-between; /* Distribute squares evenly */
+  margin: 20px 0; /* Add some margin for spacing */
+}
+
+.category-square {
+  width: calc(33% - 20px); /* Set width to 1/3rd of available space, minus margins */
+  text-align: center; /* Center content within the square */
+  padding: 10px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a thin border */
+  border-radius: 5px; /* Add rounded corners */
+}

@@ -1,0 +1,41 @@
+.category-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+header, .category, footer {
+  width: 100%;
+}
+
+.category {
+  text-align: center; /* Centre le titre de la catégorie */
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux produits de passer à la ligne suivante */
+  justify-content: center; /* Centre les produits horizontalement */
+  gap: 10px; /* Ajoute un peu d'espace entre les produits */
+}
+
+.product {
+  flex: 0 1 calc(33.333% - 10px); /* Trois produits par ligne, ajustez le pourcentage en fonction du nombre souhaité */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 5px; /* Espacement autour de chaque produit */
+  height: 0;
+  padding-bottom: calc(33.333% - 10px); /* Hauteur égale à la largeur pour créer un carré */
+  position: relative;
+}
+
+.product img {
+  width: 100%; /* L'image remplit la largeur du produit */
+  height: 100%; /* L'image remplit la hauteur du produit */
+  object-fit: cover; /* Garde le ratio de l'image tout en la couvrant */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
