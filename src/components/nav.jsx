@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { VscSearch } from "react-icons/vsc";
 import { VscThreeBars } from "react-icons/vsc";
 import { ShoppingCart } from 'lucide-react';
-import './css/Nav.css'
+import '../css/Nav.css'
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

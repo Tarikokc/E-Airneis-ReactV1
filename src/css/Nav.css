@@ -8,7 +8,7 @@
     position: fixed; /* Fixe la barre de navigation en haut de la page */
     top: 0; /* Positionne la barre en haut */
     left: 0; /* Positionne la barre à gauche */
-    width: 100%; /* La barre de navigation prend toute la largeur */
+    width: 98.5%; /* La barre de navigation prend toute la largeur */
     z-index: 1000; /* Assure que la barre de navigation reste au-dessus des autres éléments */
   }
   
@@ -28,9 +28,9 @@
   .menu-button {
     background: none;
     border: none;
-    margin-left: 15px;
+    margin-left: 10px;
     cursor: pointer;
-    padding: 10px;
+    padding: 15px;
     font-size: 1.2rem;
   }
   
