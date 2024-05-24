@@ -3,6 +3,7 @@ import '../css/RegisterForm.css';
 
 const RegisterForm = () => {
   const [name, setName] = useState('');
+  const [firstname, lastname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -15,12 +16,22 @@ const RegisterForm = () => {
     <div className="register-form-container">
       <form onSubmit={handleSubmit} className="register-form">
         <label htmlFor="name" className="register-form-label">
-          Nom complet*
+          Nom*
         </label>
         <input
           type="text"
           id="name"
           value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="register-form-input"
+        />
+        <label htmlFor="name" className="register-form-label">
+          Prénom*
+        </label>
+        <input
+          type="text"
+          id="firstname"
+          value={firstname}
           onChange={(e) => setName(e.target.value)}
           className="register-form-input"
         />

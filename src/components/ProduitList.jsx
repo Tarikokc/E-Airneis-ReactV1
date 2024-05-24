@@ -1,106 +1,143 @@
-import React, { useState } from 'react';
-import '../css/ProduitList.css'; 
+
+import React, { useState, useEffect } from 'react';
+import '../css/ProduitList.css';
 import Navbar from './nav.jsx';
+
 function Product({ product }) {
   return (
-    <div className="product">
+    <div className={`product ${product.stock === 0 ? 'out-of-stock' : ''}`}>
       <img src={product.image} alt={product.name} />
       <h3>{product.name}</h3>
       <p>{product.price} €</p>
+      {product.stock === 0 && <p className="stock-status">Stock épuisé</p>}
     </div>
   );
 }
 
 function CategoryPage() {
-  const [products] = useState([
-    { name: "Produit 1", price: 29.99, image: "placeholder.jpg" },
-    { name: "Produit 2", price: 45.50, image: "placeholder.jpg" },
-    { name: "Produit 3", price: 45.50, image: "placeholder.jpg" },
-    { name: "Produit 4", price: 45.50, image: "placeholder.jpg" },
-    { name: "Produit 5", price: 45.50, image: "placeholder.jpg" },
-
-
+  const [products, setProducts] = useState([
+    {
+      id: 1,
+      name: "Table en chêne",
+      price: 349.99,
+      image: "https://placehold.co/200x200",
+      stock: 10,
+      priority: 1
+    },
+    {
+      id: 2,
+      name: "Table basse moderne",
+      price: 150.00,
+      image: "https://placehold.co/200x200",
+      stock: 0, // Stock épuisé
+      priority: 2
+    },
+    {
+      id: 3,
+      name: "Table de nuit classique",
+      price: 75.50,
+      image: "https://placehold.co/200x200",
+      stock: 5,
+      priority: 3
+    },
+    {
+      id: 4,
+      name: "Table de cuisine familiale",
+      price: 220.00,
+      image: "https://placehold.co/200x200",
+      stock: 2,
+      priority: 1
+    },
+    {
+      id: 5,
+      name: "Table d'appoint",
+      price: 89.99,
+      image: "https://placehold.co/200x200",
+      stock: 0, // Stock épuisé
+      priority: 2
+    },
+    {
+      id: 6,
+      name: "Table de jardin en teck",
+      price: 499.99,
+      image: "https://placehold.co/200x200",
+      stock: 8,
+      priority: 1
+    },
+    {
+      id: 7,
+      name: "Table de travail ergonomique",
+      price: 199.99,
+      image: "https://placehold.co/200x200",
+      stock: 3,
+      priority: 2
+    },
+    {
+      id: 8,
+      name: "Table à manger extensible",
+      price: 349.00,
+      image: "https://placehold.co/200x200",
+      stock: 1,
+      priority: 1
+    },
+    {
+      id: 9,
+      name: "Table de salon en verre",
+      price: 279.99,
+      image: "https://placehold.co/200x200",
+      stock: 0, // Stock épuisé
+      priority: 3
+    },
+    {
+      id: 10,
+      name: "Table de chevet en pin",
+      price: 59.99,
+      image: "https://placehold.co/200x200",
+      stock: 12,
+      priority: 2
+    },
   ]);
+
+  useEffect(() => {
+    // Remplacez par l'URL de votre API pour récupérer les produits
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(data => {
+        // Trier les produits par priorité et stock
+        const sortedProducts = data.sort((a, b) => {
+          if (a.priority !== b.priority) {
+            return a.priority - b.priority;
+          }
+          if (a.stock === 0) {
+            return 1;
+          }
+          if (b.stock === 0) {
+            return -1;
+          }
+          return 0;
+        });
+        setProducts(sortedProducts);
+      });
+  }, []);
 
   return (
     <div className="category-page">
 
-      {/* Catégorie */}
       <section className="category">
-        <h2>Tables</h2> 
-  
-        
-        {/* Grille de produits */}
+        <div className="category-header">
+          <img src="https://placehold.co/1910x300" alt="Category" />
+          <h1 className="category-title">Tables</h1>
+        </div>
+        <p className="category-description">Découvrez notre sélection de tables pour tous les styles.</p>
         <div className="product-grid">
-          {products.map((product, index) => (
-            <Product key={index} product={product} />
-            
+          {products.map((product) => (
+            <Product key={product.id} product={product} />
           ))}
         </div>
       </section>
 
-      {/* Footer */}
-      <footer>
-        {/* ... contenu du footer */}
-      </footer>
     </div>
   );
 }
 
 export default CategoryPage;
-
-// import React, { useState, useEffect } from 'react';
-// import './css/ProduitList.css';
-// import Navbar from './nav.jsx';
-
-// function Product({ product }) {
-//   const [showDetails, setShowDetails] = useState(false);
-
-//   return (
-//     <div className="product">
-//       <img src={product.image} alt={product.name} />
-//       <h3>{product.name}</h3>
-//       <p>{product.price} €</p>
-//       <button onClick={() => setShowDetails(!showDetails)}>
-//         {showDetails ? 'Masquer les détails' : 'Voir les détails'}
-//       </button>
-//       {showDetails && (
-//         <div className="product-details">
-//           {/* Détails supplémentaires du produit (description, etc.) */}
-//           <p>{product.description}</p> 
-//           {/* Ajoutez ici les détails que vous souhaitez afficher */}
-//         </div>
-//       )}
-//       <button className="add-to-cart">Ajouter au panier</button>
-//     </div>
-//   );
-// }
-
-// function CategoryPage() {
-//   const [products, setProducts] = useState([]);
-
-//   useEffect(() => {
-//     fetch('/api/products') // Remplacez par l'URL de votre API
-//       .then(res => res.json())
-//       .then(data => setProducts(data));
-//   }, []);
-
-//   return (
-//     <div className="category-page">
-//       <Navbar /> {/* Ajoutez votre barre de navigation ici */}
-//       <section className="category">
-//         <h2>Tables</h2>
-//         <div className="product-grid">
-//           {products.map((product) => (
-//             <Product key={product.id} product={product} /> // Utilisez l'ID unique du produit comme clé
-//           ))}
-//         </div>
-//       </section>
-//       <footer>
-//         {/* ... contenu du footer */}
-//       </footer>
-//     </div>
-//   );
-// }
-
-// export default CategoryPage;
