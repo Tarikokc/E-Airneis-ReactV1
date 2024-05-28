@@ -23,7 +23,7 @@ function App() {
             <Route path="/menu" element={<Menu />} />
             <Route path="/search" element={<SearchBar />} />
           </Routes>
-          <Footer />  {/* Positionnez le Footer après les Routes */}
+          <Footer />  
         </header>
       </div>
     </BrowserRouter>
