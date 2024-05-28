@@ -30,6 +30,7 @@ import LoginForm from './LoginPage/LoginForm.jsx';
 import CategoryPage from './components/ProduitList.jsx';
 import Navbar from './components/nav.jsx';
 import Footer from './components/footer.jsx';
+import Contact from './components/contact.jsx';
 function App() {
   return (
     <BrowserRouter> 
@@ -41,6 +42,7 @@ function App() {
             {/* <Route path="/" element={<Accueil />} />  */}
             {/* <Route path="/" element={<RegisterForm />} /> */}
             <Route path="/" element={<LoginForm />} />
+            {/* <Route path="/" element={<Contact />} /> */}
             {/* <Route path="/" element={<CategoryPage />} />  */}
           </Routes>
         </header>
