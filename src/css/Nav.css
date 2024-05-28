@@ -1,60 +1,90 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px; /* Ajustement de l'espacement */
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: fixed; /* Fixe la barre de navigation en haut de la page */
-    top: 0; /* Positionne la barre en haut */
-    left: 0; /* Positionne la barre à gauche */
-    width: 98.5%; /* La barre de navigation prend toute la largeur */
-    z-index: 1000; /* Assure que la barre de navigation reste au-dessus des autres éléments */
-  }
-  
-  .logo h1 {
-    margin: 0;
-    font-size: 1.8rem; /* Légère augmentation de la taille du logo */
-    color: #333;
-  }
-  
-  .icons {
-    display: flex;
-    align-items: center;
-  }
-  
-  .search-button,
-  .cart-button,
-  .menu-button {
-    background: none;
-    border: none;
-    margin-left: 10px;
-    cursor: pointer;
-    padding: 15px;
-    font-size: 1.2rem;
-  }
-  
-  /* Menu déroulant */
-  .dropdown-menu {
-    position: absolute;
-    top: 100%; 
-    right: 20px; 
-    background-color: #fff; /* Même couleur que la navbar */
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    min-width: 200px; /* Largeur minimale */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Styles supplémentaires pour les liens du menu déroulant */
-  .dropdown-menu a {
-    display: block; /* Chaque lien occupe toute la largeur */
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .dropdown-menu a:hover {
-    background-color: #f5f5f5; /* Couleur de fond au survol */
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  /* Ajustement de l'espacement */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  /* Fixe la barre de navigation en haut de la page */
+  top: 0;
+  /* Positionne la barre en haut */
+  left: 0;
+  /* Positionne la barre à gauche */
+  width: 98.5%;
+  /* La barre de navigation prend toute la largeur */
+  z-index: 1000;
+  /* Assure que la barre de navigation reste au-dessus des autres éléments */
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  /* Légère augmentation de la taille du logo */
+  color: #333;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.search-button,
+.cart-button,
+.menu-button {
+  background: none;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+  padding: 15px;
+  font-size: 1.2rem;
+}
+
+
+/* Menu (masqué par défaut) */
+.menu {
+  display: none;
+  position: absolute;
+  /* Positionnement du menu */
+  top: 100%;
+  /* Juste en dessous de la navbar */
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-width: 200px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  /* Assurer que le menu est au-dessus des autres éléments */
+}
+
+/* Menu ouvert */
+.menu.open {
+  display: block;
+}
+
+/* Styles supplémentaires pour les liens du menu */
+.menu ul {
+  list-style: none;
+  /* Supprimer les puces */
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin-bottom: 10px;
+  /* Espace entre les éléments du menu */
+}
+
+.menu a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+.menu a:hover {
+  background-color: #f5f5f5;
+}
+

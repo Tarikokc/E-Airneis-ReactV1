@@ -1,27 +1,3 @@
-// import './App.css';
-// import Accueil from './accueil.jsx';
-// import RegisterForm from './LoginPage/RegisterForm.jsx';
-// import LoginForm from './LoginPage/LoginForm.jsx';
-// import CategoryPage from './ProduitList.jsx';
-// import Navbar from './nav.jsx';
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <Navbar />
-
-//         {/* <Accueil />  */}
-//         {/* <RegisterForm /> */}
-//         {/* <LoginForm /> */}
-//         <CategoryPage /> 
-
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Accueil from './components/accueil.jsx';
@@ -30,19 +6,24 @@ import LoginForm from './LoginPage/LoginForm.jsx';
 import CategoryPage from './components/ProduitList.jsx';
 import Navbar from './components/nav.jsx';
 import Footer from './components/footer.jsx';
+import Menu from './components/menu.jsx';
+import SearchBar from './components/search.jsx';
+
 function App() {
   return (
-    <BrowserRouter> 
+    <BrowserRouter>
       <div className="App">
         <header className="App-header">
           <Navbar /> 
-          <Footer />
           <Routes> 
-            {/* <Route path="/" element={<Accueil />} />  */}
-            {/* <Route path="/" element={<RegisterForm />} /> */}
-            <Route path="/" element={<LoginForm />} />
-            {/* <Route path="/" element={<CategoryPage />} />  */}
+            <Route path="/" element={<Accueil />} />
+            <Route path="/register" element={<RegisterForm />} />
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/categories" element={<CategoryPage />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/search" element={<SearchBar />} />
           </Routes>
+          <Footer />  {/* Positionnez le Footer après les Routes */}
         </header>
       </div>
     </BrowserRouter>
