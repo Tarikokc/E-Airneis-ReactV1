@@ -12,7 +12,7 @@
   /* Positionne la barre en haut */
   left: 0;
   /* Positionne la barre à gauche */
-  width: 98.5%;
+  width: 100%;
   /* La barre de navigation prend toute la largeur */
   z-index: 1000;
   /* Assure que la barre de navigation reste au-dessus des autres éléments */

@@ -4,7 +4,7 @@ const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = () => {
-    onSearch(searchTerm); // Appelle la fonction onSearch avec le terme de recherche
+    onSearch(searchTerm); 
   };
 
   return (

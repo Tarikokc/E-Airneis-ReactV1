@@ -8,7 +8,7 @@ import Navbar from './components/nav.jsx';
 import Footer from './components/footer.jsx';
 import Menu from './components/menu.jsx';
 import SearchBar from './components/search.jsx';
-
+import Contact from './components/contact.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -22,6 +22,7 @@ function App() {
             <Route path="/categories" element={<CategoryPage />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/search" element={<SearchBar />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
           <Footer />  
         </header>

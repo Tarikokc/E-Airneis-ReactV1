@@ -11,7 +11,7 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [isSearchOpen, setIsSearchOpen] = useState(false); // Nouvel état pour la barre de recherche
+  const [isSearchOpen, setIsSearchOpen] = useState(false); 
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,7 +20,6 @@ function Navbar() {
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
     
-    // Filtrer les résultats en temps réel (facultatif)
     const results = searchData.filter(item =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -50,7 +49,7 @@ function Navbar() {
             placeholder="Rechercher..."
             value={searchTerm}
             onChange={handleSearch}
-            className="search-input" // Ajoutez une classe pour le style
+            className="search-input" 
           />
         )}
 

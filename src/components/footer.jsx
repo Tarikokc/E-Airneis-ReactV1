@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-import { AiFillInstagram, AiFillLinkedin, AiFillFacebook } from 'react-icons/ai'; // Importation simplifiée
+import { AiFillInstagram, AiFillLinkedin, AiFillFacebook } from 'react-icons/ai'; 
 import "../css/Footer.css";
 
 
