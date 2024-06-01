@@ -33,7 +33,7 @@ const RegisterForm = () => {
           type="text"
           id="firstname"
           value={firstname}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => lastname(e.target.value)}
           className="register-form-input"
         />
 
