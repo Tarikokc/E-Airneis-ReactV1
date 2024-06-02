@@ -10,6 +10,7 @@ import Menu from './components/menu.jsx';
 import SearchBar from './components/search.jsx';
 import Contact from './components/contact.jsx';
 import ProductSingle from './components/ProductSingle.jsx';
+import '@hotwired/stimulus'
 
 function App() {
   return (
