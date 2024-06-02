@@ -9,6 +9,8 @@ import Footer from './components/footer.jsx';
 import Menu from './components/menu.jsx';
 import SearchBar from './components/search.jsx';
 import Contact from './components/contact.jsx';
+import '@hotwired/stimulus'
+
 function App() {
   return (
     <BrowserRouter>
