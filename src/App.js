@@ -9,6 +9,7 @@ import Footer from './components/footer.jsx';
 import Menu from './components/menu.jsx';
 import SearchBar from './components/search.jsx';
 import Contact from './components/contact.jsx';
+import ProductSingle from './components/ProductSingle.jsx';
 import '@hotwired/stimulus'
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/menu" element={<Menu />} />
             <Route path="/search" element={<SearchBar />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/product/:productId" element={<ProductSingle/>} />
           </Routes>
           <Footer />  
         </header>
