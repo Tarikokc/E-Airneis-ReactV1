@@ -43,7 +43,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
         <li><Link to="/login" onClick={toggleMenu}>Se connecter</Link></li>
         <li><Link to="/register" onClick={toggleMenu}>S'inscrire</Link></li>
         <li><Link to="/recherche" onClick={toggleMenu}>Recherche</Link></li>
-        <li><Link to="/OrderPage" onClick={toggleMenu}>Mes commandes</Link></li>
+        <li><Link to="/orderHistory" onClick={toggleMenu}>Mes commandes</Link></li>
         <li><Link to="/cgu" onClick={toggleMenu}>CGU</Link></li>
         <li><Link to="/legal" onClick={toggleMenu}>Mentions légales</Link></li>
         <li><Link to="/contact" onClick={toggleMenu}>Contact</Link></li>

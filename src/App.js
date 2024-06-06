@@ -11,6 +11,7 @@ import SearchBar from './components/search.jsx';
 import Contact from './components/contact.jsx';
 import ProductSingle from './components/ProductSingle.jsx';
 import '@hotwired/stimulus'
+import OrderHistory from './components/orderHistory.jsx';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<Accueil />} />
             <Route path="/register" element={<RegisterForm />} />
             <Route path="/login" element={<LoginForm />} />
+            <Route path="/orderHistory" element={<OrderHistory />} />
             <Route path="/categories" element={<CategoryPage />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/search" element={<SearchBar />} />

@@ -1,0 +1,17 @@
+.order-history-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .year-section {
+    margin-bottom: 30px;
+  }
+  
+  .order-details {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
