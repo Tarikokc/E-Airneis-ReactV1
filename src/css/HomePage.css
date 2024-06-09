@@ -1,5 +1,5 @@
 /* Styles généraux */
-/* body {
+body {
   margin: 0;
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
@@ -11,10 +11,10 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-} */
+}
 
 /* Navigation */
-/* .navigation {
+.navigation {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -23,9 +23,9 @@
   align-items: center;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-} */
+}
 
-/* .navigation a {
+.navigation a {
   text-decoration: none;
   color: #333;
   padding: 15px;
@@ -34,100 +34,17 @@
 
 .navigation a:hover {
   background-color: #f0f0f0;
-} */
-
-/* Carrousels (tous) */
-/* .carousel .slide {
-  height: 100%; 
-}
-
-.carousel .slide img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.carousel .control-dots {
-  bottom: 20px;
-}
-
-.carousel .control-arrow {
-  background-color: rgba(0, 0, 0, 0.5);
-} */
-
-/* Premier carrousel (full-width) */
-/* .full-width-carousel .carousel .slide {
-  background: none; 
-} */
-
-/* Conteneurs des carrousels */
-/* .carousel-container {
-  margin-bottom: 40px;
-} */
-
-/* Carrousel des catégories */
-.category-squares {
-  display: flex;
-  justify-content: space-between;
-}
-
-.category-square {
-  width: calc(33% - 20px);
-  text-align: center;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.category-square:hover {
-  transform: translateY(-5px);
-}
-
-.category-square img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-/* Texte des légendes */
-.carousel-caption {
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 15px;
-  border-radius: 5px;
-}
-
-/* Carrousels de catégories (modifié) */
-.category-carousels-container {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-}
-
-.category-carousel-wrapper {
-  width: 250px; /* Largeur fixe pour les carrousels */
-  height: 250px; /* Hauteur fixe pour les carrousels */
-  flex: 0 0 auto; /* Les wrappers ne rétrécissent pas */
-  border-radius: 8px; /* Coins arrondis pour les carrousels */
-  overflow: hidden; /* Cache le contenu qui dépasse */
-}
-
-/* Styles généraux de la page */
-.home-page {
-  font-family: sans-serif; /* Choisissez la police de votre choix */
-  line-height: 1.6;
-  margin: 0; /* Supprime les marges par défaut du body */
 }
 
 /* Carrousel principal */
 .carousel-container {
-  margin-bottom: 30px; /* Espacement en dessous du carrousel */
+  margin-bottom: 30px;
 }
 
 .carousel-slide img {
   width: 100%;
-  height: 400px; /* Ajustez la hauteur selon vos besoins */
-  object-fit: cover; /* Pour que l'image remplisse l'espace sans être déformée */
+  height: 400px;
+  object-fit: cover;
 }
 
 /* Grille de catégories */
@@ -135,18 +52,18 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  margin-bottom: 40px; /* Espacement en dessous de la grille */
+  margin-bottom: 40px;
 }
 
 .category-item {
-  text-align: center; /* Centre le texte sous l'image */
+  text-align: center;
 }
 
 .category-item img {
   width: 100%;
-  height: 200px; /* Ajustez la hauteur selon vos besoins */
+  height: 200px;
   object-fit: cover;
-  margin-bottom: 10px; /* Espace entre l'image et le titre */
+  margin-bottom: 10px;
 }
 
 /* Les Highlanders du moment */
@@ -168,8 +85,7 @@
 
 .product-item img {
   width: 100%;
-  height: 200px; /* Ajustez la hauteur selon vos besoins */
+  height: 200px;
   object-fit: cover;
   margin-bottom: 10px;
 }
-
