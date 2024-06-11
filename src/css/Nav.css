@@ -74,6 +74,8 @@
 
 .menu li {
   margin-bottom: 10px;
+  color: #333;
+
   /* Espace entre les éléments du menu */
 }
 
