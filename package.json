@@ -16,7 +16,9 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "proxy": "http://localhost:8000"
+
   },
   "scripts": {
     "start": "react-scripts start",
@@ -46,5 +48,11 @@
   "main": "index.js",
   "keywords": [],
   "author": "",
+<<<<<<< HEAD
   "license": "ISC"
 }
+=======
+  "license": "ISC",
+  "proxy": "http://localhost:8000"
+}
+>>>>>>> e982a5f80be7be11638b9544e4a3582e4a84d2fd

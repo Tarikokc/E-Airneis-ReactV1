@@ -1,0 +1,81 @@
+/* Styles généraux (inchangés) */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+/* Conteneur principal (inchangé) */
+.order-history {
+  padding: 20px 40px;
+  width: 100%; 
+}
+
+/* Conteneur principal (inchangé) */
+.order-history .container {
+  max-width: 960px; 
+  margin: 0 auto; 
+  padding: 20px; 
+}
+
+/* Formulaire (en-tête de la section) (inchangé) */
+.order-history .form {
+  background: #fff; 
+  padding: 30px;
+  border-radius: 10px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+/* Titre de la section (couleur du texte en jaune) */
+.order-history .form h2 {
+  color: #ffd700; /* Jaune */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Sections par année (inchangé) */
+.year-section {
+  margin-bottom: 30px;
+}
+
+/* Titre de l'année (couleur du texte en jaune) */
+.year-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #ffd700; /* Jaune */
+}
+
+/* Liste des commandes (inchangé) */
+.year-section ul {
+  list-style: none; 
+  padding: 0;
+}
+
+/* Détails de la commande (inchangé) */
+.order-details {
+  background: #f6f6f6; 
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
+}
+
+/* Détails de la commande - titre (couleur du texte en jaune) */
+.order-details h4 {
+  color: #ffd700; /* Jaune */
+  margin-bottom: 5px;
+}
+
+/* Détails de la commande - texte (couleur du texte en noir) */
+.order-details p {
+  margin-bottom: 5px;
+  color: #333; /* Noir */
+}
+
+/* Liste des produits dans la commande (couleur du texte en noir) */
+.order-details ul {
+  list-style: disc; 
+  margin-left: 20px; 
+  color: #333; /* Noir */
+}
