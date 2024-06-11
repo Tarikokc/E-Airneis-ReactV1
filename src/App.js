@@ -12,28 +12,32 @@ import Contact from './components/contact.jsx';
 import ProductSingle from './components/ProductSingle.jsx';
 import '@hotwired/stimulus'
 import OrderHistory from './components/orderHistory.jsx';
+import AccountSettings from './components/AccountSettings.jsx';
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <header className="App-header">
-          <Navbar /> 
-          <Routes> 
-            <Route path="/" element={<Accueil />} />
-            <Route path="/register" element={<RegisterForm />} />
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/orderHistory" element={<OrderHistory />} />
-            <Route path="/categories" element={<CategoryPage />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/search" element={<SearchBar />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/product/:productId" element={<ProductSingle/>} />
-          </Routes>
-          <Footer />  
-        </header>
-      </div>
-    </BrowserRouter>
+    <div style={{ minHeight: "100vh" }}>
+      <BrowserRouter>
+        <div className="App">
+          <header className="App-header">
+            <Navbar /> 
+            <Routes> 
+              <Route path="/" element={<Accueil />} />
+              <Route path="/register" element={<RegisterForm />} />
+              <Route path="/login" element={<LoginForm />} />
+              <Route path="/orderHistory" element={<OrderHistory />} />
+              <Route path="/categories" element={<CategoryPage />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/search" element={<SearchBar />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/product/:productId" element={<ProductSingle/>} />
+              <Route path="/AccountSettings" element={<AccountSettings />} />
+            </Routes>
+            <Footer />  
+          </header>
+        </div>
+      </BrowserRouter>
+    </div>
   );
 }
 
