@@ -63,41 +63,41 @@
 
 // export default OrderHistory;
 
-import React from 'react';
-import '../css/orderHistory.css'; // Assurez-vous d'avoir ce fichier CSS
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../css/orderHistory.css";
 
 function OrderHistory() {
-  // Données de commandes fictives (remplacez par vos données réelles)
-  const groupedOrders = {
-    2024: [
-      {
-        orderId: 12345,
-        orderDate: new Date('2024-01-15'),
-        totalAmount: 159.99,
-        products: [
-          { productId: 1, productName: 'Chaise design', quantity: 2, unitPrice: 79.99 },
-        ],
-      },
-      {
-        orderId: 67890,
-        orderDate: new Date('2024-03-22'),
-        totalAmount: 89.50,
-        products: [
-          { productId: 2, productName: 'Lampe de table', quantity: 1, unitPrice: 89.50 },
-        ],
-      },
-    ],
-    2023: [
-      {
-        orderId: 24680,
-        orderDate: new Date('2023-11-08'),
-        totalAmount: 235.20,
-        products: [
-          { productId: 3, productName: 'Canapé', quantity: 1, unitPrice: 235.20 },
-        ],
-      },
-    ],
-  };
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        // Adaptez l'URL de votre API
+        const response = await axios.get("http://localhost:8000/api/commandes");
+        setOrders(response.data);
+      } catch (err) {
+        setError("Erreur lors du chargement des commandes");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+  // Regrouper les commandes par année (si nécessaire)
+  const groupedOrders = orders.reduce((acc, order) => {
+    const year = order.orderDate.slice(0, 4); // Assumes orderDate is a string like "2024-01-15"
+    acc[year] = acc[year] || [];
+    acc[year].push(order);
+    return acc;
+  }, {});
+
+  if (loading) return <div>Chargement...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="order-history">
@@ -113,15 +113,8 @@ function OrderHistory() {
                   <li key={order.orderId}>
                     <div className="order-details">
                       <h4>Commande #{order.orderId}</h4>
-                      <p>Date: {order.orderDate.toLocaleDateString()}</p>
-                      <p>Montant total: {order.totalAmount.toFixed(2)} €</p>
-                      <ul>
-                        {order.products.map(product => (
-                          <li key={product.productId}>
-                            {product.productName} x {product.quantity}
-                          </li>
-                        ))}
-                      </ul>
+                      <p>Date: {new Date(order.orderDate).toLocaleDateString()}</p>
+                      {/* ... (affichage des autres détails de la commande) ... */}
                     </div>
                   </li>
                 ))}

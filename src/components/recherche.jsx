@@ -1,151 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Search from './Search'; // Importez le composant Search
 
-const products = [
-    {
-        id: 1,
-        title: 'Produit A',
-        description: 'Description A',
-        price: 100,
-        color: 'Rouge',
-        type: 'Type 1',
-        material: 'Coton',
-        in_stock: true
-    },
-    {
-        id: 2,
-        title: 'Produit B',
-        description: 'Description B',
-        price: 150,
-        color: 'Bleu',
-        type: 'Type 2',
-        material: 'Polyester',
-        in_stock: false
-    },
-    // Ajoutez plus de produits selon vos besoins
-];
+function Recherche() {
+  const [products, setProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
-const Search = () => {
-    const [filters, setFilters] = useState({
-        color: '',
-        type: '',
-        minPrice: '',
-        maxPrice: '',
-        material: '',
-        inStock: false
-    });
-    const [results, setResults] = useState(products);
-
-    const handleInputChange = (event) => {
-        const { name, value, type, checked } = event.target;
-        setFilters({
-            ...filters,
-            [name]: type === 'checkbox' ? checked : value
-        });
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/products?search=${searchTerm}`);
+        setProducts(response.data);
+      } catch (error) {
+        console.error('Erreur lors de la récupération des produits:', error);
+      }
     };
 
-    const handleSearch = (event) => {
-        event.preventDefault();
-        const filteredProducts = products.filter(product => {
-            return (
-                (filters.color === '' || product.color.toLowerCase().includes(filters.color.toLowerCase())) &&
-                (filters.type === '' || product.type.toLowerCase().includes(filters.type.toLowerCase())) &&
-                (filters.minPrice === '' || product.price >= parseFloat(filters.minPrice)) &&
-                (filters.maxPrice === '' || product.price <= parseFloat(filters.maxPrice)) &&
-                (filters.material === '' || product.material.toLowerCase().includes(filters.material.toLowerCase())) &&
-                (!filters.inStock || product.in_stock)
-            );
-        });
-        setResults(filteredProducts);
-    };
+    fetchProducts();
+  }, [searchTerm]); // Exécutez l'effet à chaque changement de searchTerm
 
-    return (
-        <div style={{ display: 'flex' }}>
-            <div style={{ flex: '1', padding: '20px' }}>
-                <h2>Filtres</h2>
-                <form onSubmit={handleSearch}>
-                    <div>
-                        <label>Couleur:</label>
-                        <input
-                            type="text"
-                            name="color"
-                            value={filters.color}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-                    <div>
-                        <label>Type:</label>
-                        <input
-                            type="text"
-                            name="type"
-                            value={filters.type}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-                    <div>
-                        <label>Prix minimum:</label>
-                        <input
-                            type="number"
-                            name="minPrice"
-                            value={filters.minPrice}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-                    <div>
-                        <label>Prix maximum:</label>
-                        <input
-                            type="number"
-                            name="maxPrice"
-                            value={filters.maxPrice}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-                    <div>
-                        <label>Matière:</label>
-                        <input
-                            type="text"
-                            name="material"
-                            value={filters.material}
-                            onChange={handleInputChange}
-                        />
-                    </div>
-                    <div>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="inStock"
-                                checked={filters.inStock}
-                                onChange={handleInputChange}
-                            />
-                            Uniquement en stock
-                        </label>
-                    </div>
-                    <button type="submit">Rechercher</button>
-                </form>
-            </div>
-            <div style={{ flex: '3', padding: '20px' }}>
-                <h2>Résultats</h2>
-                <div>
-                    {results.length > 0 ? (
-                        <ul>
-                            {results.map((product) => (
-                                <li key={product.id}>
-                                    <h3>{product.title}</h3>
-                                    <p>{product.description}</p>
-                                    <p>Prix: {product.price} €</p>
-                                    <p>Couleur: {product.color}</p>
-                                    <p>Type: {product.type}</p>
-                                    <p>Matière: {product.material}</p>
-                                    <p>{product.in_stock ? 'En stock' : 'Rupture de stock'}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <p>Aucun produit trouvé</p>
-                    )}
-                </div>
-            </div>
-        </div>
-    );
-};
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
 
-export default Search;
+  return (
+    <div>
+      <Search onSearch={handleSearch} /> {/* Utilisez le composant Search */}
+      <div className="product-grid">
+        {products.map(product => (
+          <div key={product.product_id} className="product-item">
+            {/* ... (affichage des détails du produit) ... */}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default Recherche;

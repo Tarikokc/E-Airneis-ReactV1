@@ -48,11 +48,6 @@
   "main": "index.js",
   "keywords": [],
   "author": "",
-<<<<<<< HEAD
-  "license": "ISC"
-}
-=======
   "license": "ISC",
   "proxy": "http://localhost:8000"
 }
->>>>>>> e982a5f80be7be11638b9544e4a3582e4a84d2fd
