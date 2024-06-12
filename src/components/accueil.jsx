@@ -4,6 +4,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Popup from './popUp'; // Importez le composant Popup
 
 const baseUrl = '/img/';
 
@@ -11,6 +12,8 @@ const HomePage = () => {
   const [produits, setProduits] = useState([]);
   const [categories, setCategories] = useState([]);
   const defaultImage = baseUrl + 'React-JS';
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showPopup, setShowPopup] = useState(false); // Etat pour afficher/cacher le popup
 
   useEffect(() => {
     axios.get('http://localhost:8000/api/produits')
@@ -27,9 +30,18 @@ const HomePage = () => {
       .catch(error => {
         console.error('Erreur lors de la récupération des catégories :', error);
       });
+    // Vérification de l'état de connexion au chargement initial
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      setIsLoggedIn(true);
+      setShowPopup(true); // Afficher le popup si l'utilisateur est connecté
+    }
+
   }, []);
 
-
+const handleClosePopup = () => {
+    setShowPopup(false);
+  };
 
   return (
     <div className="home-page">
@@ -45,6 +57,13 @@ const HomePage = () => {
         ))}
       </Carousel>
 
+      {showPopup && (
+        <Popup
+          className={showPopup ? 'show' : ''} // Ajout de la classe conditionnelle
+          message={`Bienvenue, ${JSON.parse(localStorage.getItem('user')).firstname}!`}
+          onClose={handleClosePopup}
+        />
+      )}
       <h2>Venant des hautes terres d'Ecosse
         <br></br>
         Nos Meubles sont IMMORTELS
@@ -90,6 +109,8 @@ const HomePage = () => {
             <p>Prix : {produit.prix} €</p>
           </Link>
         ))}
+
+
       </div>
     </div>
   );

@@ -107,3 +107,40 @@ body {
 .product-item img:hover {
   transform: scale(1.1);
 }
+
+/* Styles pour le popup */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f0f0f0; /* Fond plus doux */
+  padding: 30px;
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+  z-index: 10;
+  opacity: 0; /* Initialement invisible */
+  transition: opacity 0.3s ease-in-out; /* Transition en douceur */
+}
+
+.popup.show { /* Classe pour afficher le popup */
+  opacity: 1;
+}
+.popup-content {
+  text-align: center;
+}
+
+.popup h2 {
+  color: #333; /* Couleur du texte plus foncée */
+  margin-bottom: 15px;
+}
+
+.popup button {
+  background-color: #4CAF50; /* Couleur de fond du bouton */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
