@@ -30,7 +30,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
           </>
         ) : (
           <>
-            <li><Link to="/profile" onClick={toggleMenu}>Mon profil</Link></li>
+            <li><Link to="/AccountSettings" onClick={toggleMenu}>Paramètres du compte</Link></li>
             <li onClick={handleLogout}>Déconnexion</li>
           </>
         )}
