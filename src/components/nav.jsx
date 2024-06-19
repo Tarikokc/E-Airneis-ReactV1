@@ -6,6 +6,7 @@ import '../css/Nav.css';
 import { Link } from 'react-router-dom';
 import Menu from './menu';
 import searchData from './search'; // Importez vos données de recherche fictives
+import CategoryPage from './CategoryPage';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,6 +38,13 @@ function Navbar() {
           <h1>AIRNEIS</h1>
         </div>
       </Link>
+
+      {/* <button className="category-button" >
+          <CategoryPage /> Catégories
+        </button> */}
+
+        
+      
 
       <div className="icons">
         <button className="search-button" onClick={toggleSearch}>

@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Accueil from './components/accueil.jsx';
 import RegisterForm from './LoginPage/RegisterForm.jsx';
 import LoginForm from './LoginPage/LoginForm.jsx';
-import CategoryPage from './components/ProduitList.jsx';
+import CategoryPage from './components/CategoryPage.jsx';
 import Navbar from './components/nav.jsx';
 import Footer from './components/footer.jsx';
 import Menu from './components/menu.jsx';
@@ -24,7 +24,7 @@ function App() {
             <Route path="/register" element={<RegisterForm />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/orderHistory" element={<OrderHistory />} />
-            <Route path="/categories" element={<CategoryPage />} />
+            <Route path="/category/:categoryId" element={<CategoryPage />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/search" element={<SearchBar />} />
             <Route path="/contact" element={<Contact />} />
@@ -38,3 +38,6 @@ function App() {
 }
 
 export default App;
+
+
+

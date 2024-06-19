@@ -39,7 +39,7 @@ const HomePage = () => {
 
   }, []);
 
-const handleClosePopup = () => {
+  const handleClosePopup = () => {
     setShowPopup(false);
   };
 
@@ -69,8 +69,8 @@ const handleClosePopup = () => {
         Nos Meubles sont IMMORTELS
       </h2>
 
-      <div className="category-grid">
-        {categories.map((category) => (
+      {/* <div className="category-grid">
+        {categories.slice(0, 3).map((category) =>(
           <div key={category.categoryId} className="category-item">
             <img
               src={category.defaultPhotoUrl ? baseUrl + category.defaultPhotoUrl : defaultImage}
@@ -78,6 +78,22 @@ const handleClosePopup = () => {
             />
             <h3>{category.categoryName}</h3>
           </div>
+        ))}
+      </div> */}
+
+      <div className="category-grid">
+        {categories.slice(0, 3).map((category) => (
+          <Link
+            key={category.categoryId}
+            to={`/category/${category.categoryId}`}
+            className="category-item"
+          >
+            <img
+              src={category.defaultPhotoUrl ? baseUrl + category.defaultPhotoUrl : defaultImage}
+              alt={category.categoryName}
+            />
+            <h3>{category.categoryName}</h3>
+          </Link>
         ))}
       </div>
 
@@ -96,7 +112,9 @@ const handleClosePopup = () => {
       </div> */}
 
       <div className="product-grid">
-        {produits.map((produit) => (
+        {/* {produits.map((produit) => ( */}
+        {produits.slice(0, 3).map((produit) => ( // Affiche seulement les 3 premiers produits
+
           <Link // Utilise Link pour rendre l'élément cliquable
             key={produit.productId}
             to={`/product/${produit.productId}`} // Redirige vers la page du produit
