@@ -5,7 +5,7 @@ import { ShoppingCart } from 'lucide-react';
 import '../css/Nav.css';
 import { Link } from 'react-router-dom';
 import Menu from './menu';
-import searchData from './search'; // Importez vos données de recherche fictives
+import searchData from './ResearchPage'; // Importez vos données de recherche fictives
 import CategoryPage from './CategoryPage';
 
 function Navbar() {

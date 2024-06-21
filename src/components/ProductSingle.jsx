@@ -250,6 +250,8 @@ const ProductSingle = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
+        console.log("Données du produit :", product);
+
         const response = await axios.get(`http://localhost:8000/api/produit/${productId}`);
         const productData = response.data;
         setProduct(productData);

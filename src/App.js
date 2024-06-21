@@ -9,9 +9,9 @@ import CategoryPage from './components/CategoryPage.jsx';
 import Navbar from './components/nav.jsx';
 import Footer from './components/footer.jsx';
 import Menu from './components/menu.jsx';
-import SearchBar from './components/search.jsx';
+import RecherchePage from './components/ResearchPage.jsx';
 import Contact from './components/contact.jsx';
-import ProductSingle from './components/CategoryPage.jsx';
+import ProductSingle from './components/ProductSingle.jsx';
 import '@hotwired/stimulus'
 import OrderHistory from './components/orderHistory.jsx';
 import AccountSettings from './components/AccountSettings.jsx';
@@ -32,11 +32,12 @@ function App() {
               <Route path="/register" element={<RegisterForm />} />
               <Route path="/login" element={<LoginForm />} />
               <Route path="/orderHistory" element={<OrderHistory />} />
+              <Route path="/product/:productId" element={<ProductSingle/>} />
               <Route path="/category/:categoryId" element={<CategoryPage />} />
               <Route path="/menu" element={<Menu />} />
-              <Route path="/search" element={<SearchBar />} />
+              {/* <Route path="/search" element={<SearchBar />} /> */}
+              <Route path="/recherche" element={<RecherchePage />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/product/:productId" element={<ProductSingle/>} />
               <Route path="/AccountSettings" element={<AccountSettings />} />
               <Route path="/Checkout" element={<Elements stripe={stripePromise}><Checkout /></Elements>} />
               <Route path="/confirmation" element={<Confirmation />} />

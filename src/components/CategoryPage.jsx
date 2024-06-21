@@ -36,35 +36,43 @@ const CategoryPage = () => {
       });
   }, [categoryId]);
 
-  return (
-    <div className="category-page">
-      {category && (
-        <div className="category-header">
-          <div className="category-image-container"> {/* Conteneur pour l'image et le titre */}
-            <img src={baseUrl + category.defaultPhotoUrl} alt={category.categoryName} />
-            <h2 className="category-title">{category.categoryName}</h2>
-          </div>
+return (
+  <div className="category-page">
+    {category && (
+      <div className="category-title-container">
+        {/* Affichage conditionnel de l'image du produit */}
+        {categoryProducts.length > 0 && (
+          <img 
+            src={baseUrl + categoryProducts[0].productPhotos[0]?.photoUrl}
+            alt={categoryProducts[0].Nom}
+          />
+        )}
+        <div className="category-title-overlay">
+          <h1 className="category-title">{category.categoryName}</h1>
           <p className="category-description">{category.description}</p>
         </div>
-      )}
-
-      <div className={`product-list ${isLoading ? 'loading' : ''}`}> {/* Grille ou liste selon la taille de l'écran */}
-        {isLoading ? (
-          <p>Chargement en cours...</p>
-        ) : categoryProducts.length > 0 ? (
-          categoryProducts.map(product => (
-            <Link key={product.productId} to={`/product/${product.productId}`} className="product-item">
-              <img src={baseUrl + product.productPhotos[0].photoUrl} alt={product.Nom} />
-              <h3>{product.Nom}</h3>
-              <p>Prix : {product.prix} €</p>
-            </Link>
-          ))
-        ) : (
-          <p>Aucun produit trouvé dans cette catégorie.</p>
-        )}
       </div>
+    )}
+
+    {/* Grille des produits */}
+    <div className="product-grid">
+      {isLoading ? (
+        <p>Chargement en cours...</p>
+      ) : (          
+        categoryProducts.map(product => (
+          <Link key={product.productId} to={`/product/${product.productId}`} className="product-card"> 
+            {/* "product-card" pour donner l'aspect carte */}
+            <img src={baseUrl + product.productPhotos[0]?.photoUrl} alt={product.Nom} />
+            <div className="product-card-details">
+              <h2 className="product-card-title">{product.Nom}</h2>
+              <p className="product-card-price">{product.prix} €</p>
+            </div>
+          </Link>
+        ))
+      )}
     </div>
-  );
+  </div>
+);
 };
 
 export default CategoryPage;
