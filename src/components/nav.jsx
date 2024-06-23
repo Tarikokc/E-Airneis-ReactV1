@@ -7,12 +7,14 @@ import { Link } from 'react-router-dom';
 import Menu from './menu';
 import searchData from './ResearchPage'; // Importez vos données de recherche fictives
 import CategoryPage from './CategoryPage';
+import { useNavigate } from 'react-router-dom'; // Importer useNavigate
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isSearchOpen, setIsSearchOpen] = useState(false); 
+  const navigate = useNavigate(); // Obtenir la fonction navigate
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -28,7 +30,7 @@ function Navbar() {
   };
 
   const toggleSearch = () => {
-    setIsSearchOpen(!isSearchOpen);
+    navigate('/recherche'); // Rediriger vers la page de recherche
   };
 
   return (

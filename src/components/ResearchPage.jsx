@@ -30,33 +30,45 @@ const RecherchePage = () => {
       });
   }, []);
 
+  const fetchData = async () => { // Déplacer fetchData ici
+    setIsLoading(true);
+
+    try {
+      const response = await axios.get('http://localhost:8000/api/recherche', {
+        params: {
+          search: searchTerm,
+          materiaux: filters.materiaux.length > 0 ? filters.materiaux.join(',') : null,
+          prixMin: filters.prixMin !== '' ? filters.prixMin : null,
+          prixMax: filters.prixMax !== '' ? filters.prixMax : null,
+          categories: filters.categories.length > 0 ? filters.categories.join(',') : null,
+          enStock: filters.enStock,
+          sort,
+        },
+      });
+
+      setProducts(response.data);
+      console.log(products);
+    } catch (error) {
+      console.error('Erreur lors de la recherche :', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
+    // Récupérer les catégories pour les options de filtre
+    axios.get('http://localhost:8000/api/categories')
+      .then(response => {
+        setCategories(response.data);
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des catégories :', error);
+      });
+  }, []);
 
-      try {
-        const response = await axios.get('/api/recherche', {
-          params: {
-            search: searchTerm,
-            materiaux: filters.materiaux.join(','),
-            prixMin: filters.prixMin,
-            prixMax: filters.prixMax,
-            categories: filters.categories.join(','),
-            enStock: filters.enStock,
-            sort,
-          },
-        });
-
-        setProducts(response.data);
-      } catch (error) {
-        console.error('Erreur lors de la recherche :', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
+  useEffect(() => {
     fetchData();
-  }, [searchTerm, filters, sort]);
+  }, [searchTerm, filters, sort]); // Dépendances inchangées
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -73,9 +85,13 @@ const RecherchePage = () => {
     setSort(event.target.value);
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Empêcher le rechargement de la page
+    fetchData();
+  };
   return (
     <div className="recherche-page">
-      <form>
+      <form onSubmit={handleSubmit}> {/* Ajouter onSubmit */}
         <input
           type="text"
           placeholder="Rechercher un produit..."
@@ -162,7 +178,10 @@ const RecherchePage = () => {
                 <div className="product-card-details">
                   <h2 className="product-card-title">{product.Nom}</h2>
                   <p className="product-card-price">{product.prix} €</p>
-                </div>
+                  <p className="product-card-stock">
+                    {product.Stock > 0 ? "En stock" : "Stock épuisé"}
+                  </p>                
+                  </div>
               </Link>
             ))
           ) : (

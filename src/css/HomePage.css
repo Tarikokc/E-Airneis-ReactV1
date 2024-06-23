@@ -5,6 +5,10 @@ body {
   line-height: 1.6;
   background-color: #ffffff;   /* Fond blanc pour un look épuré */
   color: #333;
+  min-height: 100vh; /* Hauteur minimale de la fenêtre du navigateur */
+  padding-top: 60px; /* Ajustez la valeur en fonction de la hauteur de votre navbar */
+  padding-bottom: 80px; /* Ajustez la valeur en fonction de la hauteur de votre footer */
+
 }
 
 .home-page {

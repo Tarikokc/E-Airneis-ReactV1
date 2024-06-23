@@ -66,6 +66,9 @@ return (
             <div className="product-card-details">
               <h2 className="product-card-title">{product.Nom}</h2>
               <p className="product-card-price">{product.prix} €</p>
+              <p className="product-card-stock">
+                {product.Stock > 0 ? "En stock" : "Stock épuisé"}
+              </p>
             </div>
           </Link>
         ))

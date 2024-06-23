@@ -103,3 +103,7 @@
     grid-column: span 3;
   }
   
+  .product-card-stock {
+    color: green;
+    margin-bottom: 10px;
+  }
