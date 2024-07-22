@@ -78,3 +78,7 @@
     background: #fed700;
     cursor: pointer;
 }
+
+.success{
+    color : green;
+}

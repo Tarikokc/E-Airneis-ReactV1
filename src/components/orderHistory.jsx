@@ -76,7 +76,7 @@ function OrderHistory() {
     const fetchOrders = async () => {
       try {
         // Adaptez l'URL de votre API
-        const response = await axios.get("http://localhost:8000/api/order");
+        const response = await axios.get("http://localhost:8000/api/commandes");
         setOrders(response.data);
       } catch (err) {
         setError("Erreur lors du chargement des commandes");
