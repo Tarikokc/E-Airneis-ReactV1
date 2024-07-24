@@ -3,7 +3,7 @@ import { PaymentElement, useStripe, useElements, Elements } from '@stripe/react-
 import { loadStripe } from '@stripe/stripe-js';
 import '../css/StripeForm.css';
 const stripePromise = loadStripe('pk_test_51PfKZmKixfMhfPrWZ2P1UQnTDA7ohWcfHkcDWiIc6tniqXtBo22m28m8TQAGZqHuReZ0Uo8dWUt8CSrnzI4IEONR00iLw1yFqJ'); // Initialisation de Stripe
-function StripeForm() {
+function StripePayment() {
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState(null);
@@ -78,4 +78,4 @@ function StripeForm() {
   );
 }
 
-export default StripeForm;
+export default StripePayment;

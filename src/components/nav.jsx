@@ -8,12 +8,13 @@ import Menu from './menu';
 import searchData from './ResearchPage'; // Importez vos données de recherche fictives
 import CategoryPage from './CategoryPage';
 import { useNavigate } from 'react-router-dom'; // Importer useNavigate
+import Panier from './Panier';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [isSearchOpen, setIsSearchOpen] = useState(false); 
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const navigate = useNavigate(); // Obtenir la fonction navigate
 
   const toggleMenu = () => {
@@ -22,7 +23,7 @@ function Navbar() {
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
-    
+
     const results = searchData.filter(item =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -31,6 +32,10 @@ function Navbar() {
 
   const toggleSearch = () => {
     navigate('/recherche'); // Rediriger vers la page de recherche
+  };
+
+  const handleCartClick = () => {
+    navigate('/Panier'); // Rediriger vers la page /panier
   };
 
   return (
@@ -45,8 +50,8 @@ function Navbar() {
           <CategoryPage /> Catégories
         </button> */}
 
-        
-      
+
+
 
       <div className="icons">
         <button className="search-button" onClick={toggleSearch}>
@@ -54,16 +59,16 @@ function Navbar() {
         </button>
 
         {isSearchOpen && ( // Afficher la barre de recherche si ouverte
-          <input 
+          <input
             type="text"
             placeholder="Rechercher..."
             value={searchTerm}
             onChange={handleSearch}
-            className="search-input" 
+            className="search-input"
           />
         )}
 
-        <button className="cart-button">
+        <button className="cart-button" onClick={handleCartClick}>
           <ShoppingCart />
         </button>
         <button className="menu-button" onClick={toggleMenu}>

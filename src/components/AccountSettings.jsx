@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import '../css/AccountSettings.css';
+import { CardElement, Elements, ElementsConsumer } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 function AccountSettings() {
   const { register, handleSubmit, formState: { errors }, reset, setValue, watch } = useForm();
@@ -13,10 +15,13 @@ function AccountSettings() {
   const [editing, setEditing] = useState(null);
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
+  const [stripePromise, setStripePromise] = useState(null);
 
 
 
-
+  useEffect(() => {
+    setStripePromise(loadStripe('pk_test_51PfKZmKixfMhfPrWZ2P1UQnTDA7ohWcfHkcDWiIc6tniqXtBo22m28m8TQAGZqHuReZ0Uo8dWUt8CSrnzI4IEONR00iLw1yFqJ')); // Remplacez par votre clé
+  }, []);
   useEffect(() => {
     const fetchUserData = async () => {
       const userData = JSON.parse(localStorage.getItem('user'));
@@ -52,15 +57,7 @@ function AccountSettings() {
         if (data) {
           setUserData(data); // Stockez les données de l'utilisateur dans l'état
         }
-        // Définir les valeurs par défaut des champs du formulaire
-        // for (const field in data) {
-        //   setValue(field, data[field]);
-        //   console.log(`Valeur du champ ${field} :`, data[field]); // <-- Ajout de ce log
-
-        // }
-
-
-
+      
       } catch (error) {
         console.error(error);
         setApiErrors(error.message);
@@ -163,6 +160,10 @@ function AccountSettings() {
     reset();
   };
 
+  const handleCardDetailsChange = (event) => {
+    // Vous pouvez gérer la validation de la saisie de la carte ici si nécessaire
+    console.log(event);
+  };
   return (
     <div className="container mt-4">
       <div className="row">
@@ -357,6 +358,35 @@ function AccountSettings() {
                         {errors.paymentMethod && <span className="error-message">{errors.paymentMethod.message}</span>}
                       </div>
                     </div>
+                    {editing === 'paymentMethod' && watch('paymentMethod') === 'credit_card' && stripePromise ? (
+                      <Elements stripe={stripePromise}>
+                        <ElementsConsumer>
+                          {({ elements, stripe }) => (
+                            <div className="mt-2">
+                              <CardElement
+                                options={{
+                                  style: {
+                                    base: {
+                                      fontSize: '16px',
+                                      color: '#424770',
+                                      '::placeholder': {
+                                        color: '#aab7c4',
+                                      },
+                                      colorText: '#ffffff', // Couleur du texte général
+
+                                    },
+                                    invalid: {
+                                      color: '#9e2146',
+                                    },
+                                  },
+                                }}
+                                onChange={handleCardDetailsChange}
+                              />
+                            </div>
+                          )}
+                        </ElementsConsumer>
+                      </Elements>
+                    ) : null}
 
                   </>
                 ) : (

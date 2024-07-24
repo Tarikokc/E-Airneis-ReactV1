@@ -1,0 +1,81 @@
+/* Panier.css */
+.panier {
+  display: grid;
+  grid-template-columns: 3fr 1fr;  /* Colonnes : 3 parts pour les produits, 1 part pour le résumé */
+  gap: 20px;
+}
+
+.liste-produits {
+  grid-column: 1; /* Produits à gauche */
+  list-style: none;
+  padding: 0;
+  display: flex; /* Affichage en colonne des produits */
+  flex-direction: column;
+  gap: 15px;
+}
+
+.produit-panier {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.produit-panier img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 20px;
+  background-color: #F2E9E4;
+}
+
+.details-produit {
+  flex-grow: 1;
+}
+
+.details-produit h3 {
+  margin: 0 0 5px;
+}
+
+.details-produit p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.quantite {
+  display: flex;
+  align-items: center;
+}
+
+.quantite button {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.quantite span {
+  margin: 0 10px;
+}
+
+.total {
+  grid-column: 2; /* Résumé à droite */
+  grid-row: 1; /* Résumé en haut */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.total h3 {
+  margin: 0;
+}
+
+.passer-commande {
+  background-color: #FF6B6B;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 20px; 
+}
