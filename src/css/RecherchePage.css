@@ -1,109 +1,204 @@
 /* Style général de la page */
 .recherche-page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-  
-  /* Formulaire de recherche */
-  .recherche-page form {
-    display: flex;
-    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si nécessaire */
-    gap: 1rem;
-  }
-  
-  .recherche-page input[type="text"] {
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    flex-grow: 1; /* Permet au champ de recherche de prendre l'espace disponible */
-  }
-  
-  .recherche-page button[type="submit"] {
-    padding: 0.8rem 1.5rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  /* Filtres */
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  
-  .filters div {
-    display: flex;
-    align-items: center;
-  }
-  
-  .filters label {
-    margin-right: 0.5rem;
-  }
-  
-  .filters select,
-  .filters input[type="number"] {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Tri */
-  .sort {
-    display: flex;
-    align-items: center;
-    margin-top: 1rem; /* Espace au-dessus du tri */
-  }
-  
-  .sort label {
-    margin-right: 0.5rem;
-  }
-  
-  /* Grille des produits */
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Jusqu'à 3 colonnes */
-    gap: 2rem;
-    margin-top: 2rem; /* Espace au-dessus de la grille */
-  }
-  
-  /* Carte de produit */
-  .product-card {
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .product-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .product-card-details {
-    padding: 1rem;
-  }
-  
-  .product-card-title {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .product-card-price {
-    font-weight: bold;
-  }
-  
-  /* Carte de produit unique (lorsqu'il n'y a qu'un seul produit) */
-  .single-product {
-    grid-column: span 3;
-  }
-  
-  .product-card-stock {
-    color: green;
-    margin-bottom: 10px;
-  }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffffff; /* Fond blanc */
+  color: #000000;        /* Texte noir */
+}
+
+/* Formulaire de recherche */
+.recherche-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Champ de recherche */
+.recherche-page input[type="text"] {
+  padding: 0.8rem;
+  border: 1px solid #B2AC88; /* Bordure vert sauge */
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+/* Bouton de recherche */
+.recherche-page button[type="submit"] {
+  padding: 0.8rem 1.5rem;
+  background-color: #B2AC88; /* Vert sauge */
+  color: #FFFFFF;           /* Texte blanc */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.3s;
+}
+
+.recherche-page button[type="submit"]:hover {
+  background-color: #9FA480; /* Teinte plus foncée du vert sauge */
+}
+
+/* Bouton pour afficher les filtres */
+.show-filters-button {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #B2AC88; /* Vert sauge */
+  color: #FFFFFF;           /* Texte blanc */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.3s;
+}
+
+.show-filters-button:hover {
+  background-color: #9FA480; /* Teinte plus foncée du vert sauge */
+}
+
+/* Filtres */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Groupe de filtres */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 1px solid #ddd; /* Ligne de séparation sous chaque groupe de filtre */
+  padding-bottom: 1rem;
+}
+
+.filter-group label {
+  font-size: 0.875rem; /* Taille de la police uniforme */
+  color: #4A4A4A; /* Texte gris foncé */
+}
+
+/* Espacement entre les cases à cocher et les labels */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Espacement entre les cases à cocher */
+  justify-content: center; /* Centre les éléments horizontalement */
+}
+
+/* Ajustements pour les cases à cocher */
+.filters input[type="checkbox"] {
+  accent-color: #B2AC88; /* Couleur du vert sauge pour la coche */
+  margin-right: 0.5rem; /* Espace entre la case à cocher et le texte */
+}
+
+/* Tri */
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espacement entre les éléments du tri */
+  margin-top: 1rem;
+}
+
+.sort label {
+  font-size: 0.875rem;
+  color: #4A4A4A; /* Texte gris foncé */
+}
+
+.sort select {
+  -webkit-appearance: none; /* Pour Safari et Chrome */
+  -moz-appearance: none;    /* Pour Firefox */
+  appearance: none;         /* Pour les autres navigateurs */
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23B2AC88' d='M2 0l2 2.5-2 2.5z'/%3E%3C/svg%3E"); /* Flèche vert sauge */
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Position de la flèche */
+  background-size: 10px 12px;
+  padding-right: 30px; /* Espace pour la flèche */
+  padding: 0.5rem;
+  border: 1px solid #B2AC88; /* Bordure vert sauge */
+  border-radius: 4px;
+  font-size: 0.875rem;
+  width: 150px;
+}
+
+.sort select:hover {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%239FA480' d='M2 0l2 2.5-2 2.5z'/%3E%3C/svg%3E"); /* Flèche plus foncée au survol */
+}
+
+/* Grille des produits */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Carte de produit */
+.product-card {
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-card-details {
+  padding: 1rem;
+}
+
+.product-card-title {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-card-price {
+  font-weight: bold;
+}
+
+.product-card-stock {
+  color: green;
+  margin-bottom: 10px;
+  font-size: 0.875rem;
+}
+
+/* Carte de produit unique (lorsqu'il n'y a qu'un seul produit) */
+.single-product {
+  grid-column: span 3;
+}
+
+/* Filtres de prix alignés sur la même ligne */
+.filter-group.prix {
+  display: flex;
+  gap: 2rem; /* Espacement entre les deux filtres de prix */
+  justify-content: space-between; /* Espacement égal entre les éléments */
+}
+
+.filter-group-item {
+  flex: 1;
+}
+
+.filter-group-item label {
+  display: block;
+  font-size: 0.875rem;
+  color: #4A4A4A; /* Texte gris foncé */
+}
+
+.filter-group-item input[type="number"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #B2AC88; /* Bordure vert sauge */
+  border-radius: 4px;
+  font-size: 0.875rem;
+}

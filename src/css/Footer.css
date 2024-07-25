@@ -1,28 +1,46 @@
-.footer.sticky-bottom {
+/* Footer.css */
+
+/* Assurez-vous que le body et html ont une hauteur de 100% */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Styles pour le footer fixe */
+.footer {
     position: fixed;
     bottom: 0;
     left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px 15px 30px; 
-    background-color: #fff;
+    padding: 15px 20px 15px 30px;
+    background-color: #FFFFFF; /* Fond blanc */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 60px;
-    margin-top: 40px;
-    width: 100%; 
+    width: 100%;
+    margin: 0; /* Assurez-vous que le footer est correctement positionné sans marge */
+    border-top: 1px solid #EAEAEA; /* Bordure supérieure légère pour la séparation */
 }
+
 .footer .icones {
     display: flex;
-    gap: 10px; 
+    gap: 10px;
 }
 
 .footer a {
     display: flex;
+    color: #B2AC88; /* Vert sauge pour les liens */
+    text-decoration: none; /* Retirer la décoration des liens */
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #9FA480; /* Teinte plus foncée du vert sauge pour le survol */
 }
 
 .footer p {
     margin: 0;
-    color: black;
+    color: #000000; /* Texte noir pour le pied de page */
+    font-size: 0.9rem; /* Taille de police légèrement réduite pour plus de subtilité */
 }
-
