@@ -12,8 +12,7 @@ const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
-  const navigate = useNavigate(); // Obtenez la fonction de navigation
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,14 +38,14 @@ const RegisterForm = () => {
 
     } catch (error) {
       console.error('Registration failed', error.response ? error.response.data : error.message);
-      setError(error.response ? error.response.data.message : 'An error occurred');
+      setError(error.response ? error.response.data.message : 'Une erreur est survenue');
     }
   };
 
   return (
     <div className="register-form-container">
       <form onSubmit={handleSubmit} className="register-form">
-        <label htmlFor="firstname" className="register-form-label">
+        <label htmlFor="firstname">
           Prénom*
         </label>
         <input
@@ -58,7 +57,7 @@ const RegisterForm = () => {
           required // <-- Ajoutez cet attribut
 
         />
-        <label htmlFor="lastname" className="register-form-label">
+        <label htmlFor="lastname">
           Nom*
         </label>
         <input
@@ -70,7 +69,7 @@ const RegisterForm = () => {
           required // <-- Ajoutez cet attribut
 
         />
-        <label htmlFor="email" className="register-form-label">
+        <label htmlFor="email">
           E-mail*
         </label>
         <input
@@ -82,7 +81,7 @@ const RegisterForm = () => {
           required // <-- Ajoutez cet attribut
 
         />
-        <label htmlFor="password" className="register-form-label">
+        <label htmlFor="password">
           Mot de passe*
         </label>
         <input
@@ -98,7 +97,7 @@ const RegisterForm = () => {
         <button type="submit" className="register-form-button">
           S'INSCRIRE
         </button>
-        <p className="register-form-qre">
+        <p>
           Déjà un compte ? <Link to="/login">Connectez-vous.</Link>
         </p>
       </form>

@@ -1,63 +1,41 @@
-/* Styles généraux du formulaire */
-.checkout-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 500px; /* Largeur maximale du formulaire */
-  margin: 0 auto;    /* Centrer le formulaire */
-  padding: 20px;     /* Ajouter un peu de padding */
-  border: 1px solid #ccc; /* Bordure subtile */
-  border-radius: 5px;   /* Coins arrondis */
-}
-
-/* Styles des titres */
-h2, h3 {
-  margin-top: 20px;
-}
-
-/* Styles des groupes de champs */
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px; /* Espace entre les groupes de champs */
-}
-
-/* Styles des labels */
-.form-group label {
-  font-weight: bold;
-}
-
-/* Styles des inputs */
-.form-group input,
-.form-group textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-/* Styles du bouton */
-button[type="submit"] {
-  background-color: #007bff; /* Bleu */
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease; /* Transition pour l'effet hover */
-}
-
-button[type="submit"]:hover {
-  background-color: #0056b3; /* Bleu plus foncé au survol */
-}
-
-/* Styles pour les messages d'erreur */
-.error {
-  color: red;
-  margin-top: 10px;
-}
-
-/* Styles pour les écrans plus petits (tablettes et mobiles) */
-@media (max-width: 768px) {
-  .checkout-form {
-    max-width: 90%; /* Prendre plus de place sur les petits écrans */
+/* Style général du formulaire */
+form {
+    width: 400px; /* Ajustez la largeur selon vos besoins */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
   }
-}
+  
+  /* Style de l'élément PaymentElement */
+  .StripeElement {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 3px;
+  }
+  
+  /* Style du bouton */
+ #payer {
+    background-color: #4CAF50; /* Couleur verte */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Prend toute la largeur du formulaire */
+    margin-top: 10px; /* Espace entre le formulaire et le bouton */
+  }
+  
+  /* Style du bouton désactivé */
+ #payer:disabled {
+    background-color: #ddd; /* Couleur grise */
+    cursor: not-allowed;
+  }
+  
+  /* Style du message d'erreur */
+  .error-message { /* Ajoutez cette classe à la div affichant l'erreur */
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  

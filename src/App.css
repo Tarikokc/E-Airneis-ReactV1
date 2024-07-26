@@ -14,19 +14,31 @@
 }
 
 .App-header {
-  background-color: #4e4e4e;
+  background-color: #F6F4F1; /* Fond blanc */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #232521; /* Texte noir */
 }
 
 .App-link {
-  color: #61dafb;
+  color: #B2AC88; /* Vert sauge */
 }
+
+a {
+  text-decoration: none; /* Supprimer le soulignement par défaut */
+  color: inherit; /* Utiliser la couleur héritée du parent */
+}
+
+a:hover {
+  /* text-decoration: underline; Ajouter un soulignement au survol */
+  color: #927e0e; /* Couleur vert sauge au survol */
+}
+
+
 
 @keyframes App-logo-spin {
   from {

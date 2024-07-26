@@ -1,24 +1,3 @@
-// import React from "react";
-// import '../css/LoginForm.css';
-// import { Link } from 'react-router-dom';
-
-// const LoginForm = () => {
-//   return (
-//     <div className="login-form">
-//       <label htmlFor="email">E-mail*</label>
-//       <input type="email" id="email" defaultValue="john@smith.com" />
-//       <label htmlFor="password">Mot de passe*</label>
-//       <input type="password" id="password" />
-//       <button className="login-button">SE CONNECTER</button>
-//       <p>
-//         Pas de compte? <Link to="/register">Inscrivez-vous.</Link> 
-//       </p>
-//     </div>
-//   );
-// };
-
-// export default LoginForm;
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../css/LoginForm.css';
@@ -28,11 +7,20 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    
+    // Simple validation
+    if (!email || !password) {
+      setError('Veuillez remplir tous les champs.');
+      return;
+    }
+
+    setIsLoading(true);
 
     try {
       const response = await axios.post('http://localhost:8000/api/login', { 
@@ -52,13 +40,14 @@ const LoginForm = () => {
       navigate('/');
     } catch (error) {
       console.error('Login failed', error.response?.data || error.message);
-      setError(error.response?.data.message || 'An error occurred');
+      setError(error.response?.data.message || 'Une erreur est survenue');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="login-form">
-      {/* Formulaire */}
       <form onSubmit={handleSubmit} className="login-form">
         <label htmlFor="email">E-mail:</label>
         <input
@@ -66,6 +55,7 @@ const LoginForm = () => {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          aria-required="true"
         />
 
         <label htmlFor="password">Mot de passe:</label>
@@ -74,10 +64,11 @@ const LoginForm = () => {
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          aria-required="true"
         />
         {error && <div className="login-form-error">{error}</div>}
-        <button type="submit" className="login-button">
-          SE CONNECTER
+        <button type="submit" className="login-button" disabled={isLoading}>
+          {isLoading ? 'Chargement...' : 'SE CONNECTER'}
         </button>
       </form>
 

@@ -1,109 +1,276 @@
 /* Style général de la page */
 .recherche-page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #000000; /* Texte noir */
+  width: 100%;
+  max-width: 1200px; /* Largeur maximale */
+}
+
+
+/* Formulaire de recherche */
+.search-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background: #dee1dd; /* Fond gris clair */
+}
+
+/* Groupe de formulaire */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Champ de recherche */
+.search-form input[type="text"] {
+  padding: 0.8rem;
+  border: 1px solid #ddd; /* Bordure douce */
+  border-radius: 8px; /* Coins arrondis modernes */
+  font-size: 0.875rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transition douce */
+}
+
+/* Champ de recherche au focus */
+.search-form input[type="text"]:focus {
+  border-color: #c0c9ba; /* Bordure au focus */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au focus */
+}
+
+/* Style des boutons du formulaire */
+.search-form button {
+  padding: 0.8rem 1.5rem;
+  background-color: #A1AA9B; /* Vert sauge */
+  color: #FFFFFF; /* Texte blanc */
+  border: none;
+  border-radius: 8px; /* Coins arrondis modernes */
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transition douce */
+  min-width: 120px; /* Largeur minimale */
+  align-self: flex-end; /* Aligne le bouton à droite */
+}
+
+/* Style des boutons au survol */
+.search-form button:hover {
+  background-color: #889480; /* Vert sauge un peu plus foncé */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+}
+
+/* Conteneur des filtres */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Groupe de filtres */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Labels des filtres */
+.filter-group label {
+  font-size: 0.875rem;
+  color: #4A4A4A; /* Texte gris foncé */
+}
+
+/* Cases à cocher */
+.checkbox-group input[type="checkbox"] {
+  appearance: none; /* Retire le style par défaut */
+  width: 1rem;
+  height: 1rem;
+  border-radius: 4px; /* Coins arrondis */
+  border: 1px solid #A1AA9B; /* Bordure vert sauge */
+  background-color: #ffffff; /* Fond blanc */
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s; /* Transition douce */
+  position: relative; /* Pour l'ajout du style de coche */
+  margin-right: 1rem;
+
+}
+
+/* Style de coche */
+.checkbox-group input[type="checkbox"]:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: #A1AA9B; /* Vert sauge */
+  border-radius: 2px;
+  transform: translate(-50%, -50%); /* Centre le style */
+
+}
+
+/* Cases à cocher au survol */
+.checkbox-group input[type="checkbox"]:hover {
+  border-color: #9b8f6e; /* Vert sauge plus foncé au survol */
+}
+
+/* Styles supplémentaires pour les champs de saisie */
+.filter-group input[type="number"] {
+  padding: 0.5rem;
+  border: 1px solid #ddd; /* Bordure douce */
+  border-radius: 8px; /* Coins arrondis modernes */
+  font-size: 0.875rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transition douce */
+}
+
+/* Champs de saisie au focus */
+.filter-group input[type="number"]:focus {
+  border-color: #B2AC88; /* Bordure au focus */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au focus */
+}
+
+/* Liste déroulante des catégories */
+.filter-group select {
+  padding: 0.5rem;
+  border: 1px solid #ddd; /* Bordure douce */
+  border-radius: 8px; /* Coins arrondis modernes */
+  font-size: 0.875rem;
+  background-color: #ffffff; /* Fond blanc */
+  color: #000000; /* Texte noir */
+  cursor: pointer;
+  appearance: none; /* Retire la flèche par défaut du navigateur */
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"%3E%3Cpath fill="none" stroke="%23666666" stroke-width="1.5" d="M1 1l4 4 4-4"%3E%3C/path%3E%3C/svg%3E'); /* Ajoute une flèche personnalisée */
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 0.65rem 0.5rem;
+}
+
+/* Liste déroulante des catégories au survol */
+.filter-group select:hover {
+  border-color: #B2AC88; /* Bordure au survol */
+}
+
+/* Styles pour le tri */
+.sort select {
+  padding: 0.5rem;
+  border: 1px solid #ddd; /* Bordure douce */
+  border-radius: 8px; /* Coins arrondis modernes */
+  font-size: 0.875rem;
+  background-color: #ffffff; /* Fond blanc */
+  color: #000000; /* Texte noir */
+  cursor: pointer;
+  appearance: none; /* Retire la flèche par défaut du navigateur */
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"%3E%3Cpath fill="none" stroke="%23666666" stroke-width="1.5" d="M1 1l4 4 4-4"%3E%3C/path%3E%3C/svg%3E'); /* Ajoute une flèche personnalisée */
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 0.65rem 0.5rem;
+  width: 150px; /* Largeur de la liste déroulante */
+}
+
+/* Liste déroulante au survol */
+.sort select:hover {
+  border-color: #B2AC88; /* Bordure au survol */
+}
+
+/* Style du tri */
+.sort {
+  display: flex;
+  align-items: center; /* Aligne verticalement le contenu au centre */
+  gap: 1rem; /* Ajoute de l'espace entre le label et le menu déroulant */
+}
+
+/* Bouton pour afficher les filtres */
+.show-filters-button {
+  padding: 0.8rem 1.5rem;
+  background-color: #B2AC88; /* Vert sauge */
+  color: #FFFFFF; /* Texte blanc */
+  border: none;
+  border-radius: 8px; /* Coins arrondis modernes */
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transition douce */
+}
+
+/* Style du bouton au survol */
+.show-filters-button:hover {
+  background-color: #9b8f6e; /* Vert sauge un peu plus foncé */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+}
+
+/* Grille des produits */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Carte produit */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd; /* Bordure douce */
+  border-radius: 8px; /* Coins arrondis modernes */
+  overflow: hidden;
+  text-decoration: none;
+  color: #000000; /* Texte noir */
+  transition: box-shadow 0.3s; /* Transition douce */
+}
+
+/* Carte produit au survol */
+.product-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au survol */
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+}
+
+.product-card-details {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.product-card-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.product-card-price {
+  font-size: 0.875rem;
+  color: #000000; /* Prix en couleur */
+}
+
+.product-card-stock {
+  font-size: 0.75rem;
+  color: #61b25a; /* Stock en vert */
+}
+
+/* Styles responsives */
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
   }
   
-  /* Formulaire de recherche */
-  .recherche-page form {
-    display: flex;
-    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si nécessaire */
-    gap: 1rem;
+  .filter-group {
+    min-width: auto;
   }
-  
-  .recherche-page input[type="text"] {
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    flex-grow: 1; /* Permet au champ de recherche de prendre l'espace disponible */
+
+  .search-form {
+    flex-direction: column;
   }
-  
-  .recherche-page button[type="submit"] {
-    padding: 0.8rem 1.5rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  /* Filtres */
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  
-  .filters div {
-    display: flex;
-    align-items: center;
-  }
-  
-  .filters label {
-    margin-right: 0.5rem;
-  }
-  
-  .filters select,
-  .filters input[type="number"] {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Tri */
-  .sort {
-    display: flex;
-    align-items: center;
-    margin-top: 1rem; /* Espace au-dessus du tri */
-  }
-  
-  .sort label {
-    margin-right: 0.5rem;
-  }
-  
-  /* Grille des produits */
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Jusqu'à 3 colonnes */
-    gap: 2rem;
-    margin-top: 2rem; /* Espace au-dessus de la grille */
-  }
-  
-  /* Carte de produit */
-  .product-card {
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .product-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .product-card-details {
-    padding: 1rem;
-  }
-  
-  .product-card-title {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .product-card-price {
-    font-weight: bold;
-  }
-  
-  /* Carte de produit unique (lorsqu'il n'y a qu'un seul produit) */
-  .single-product {
-    grid-column: span 3;
-  }
-  
-  .product-card-stock {
-    color: green;
-    margin-bottom: 10px;
-  }
+}
+
+.sort-and-filters {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}

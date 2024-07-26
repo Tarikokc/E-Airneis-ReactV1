@@ -65,7 +65,7 @@ const HomePage = () => {
         />
       )}
       <h2>Venant des hautes terres d'Ecosse
-        <br></br>
+        <br/>
         Nos Meubles sont IMMORTELS
       </h2>
 

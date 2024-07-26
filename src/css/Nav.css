@@ -1,62 +1,117 @@
+/* Styles pour la barre de navigation */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  /* Ajustement de l'espacement */
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  /* Fixe la barre de navigation en haut de la page */
+  padding: 10px 20px; /* Ajustement de l'espacement */
+  background-color: #A1AA9B; /* Fond blanc */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
+  position: fixed; /* Fixe la barre en haut */
   top: 0;
-  /* Positionne la barre en haut */
   left: 0;
-  /* Positionne la barre à gauche */
   width: 100%;
-  /* La barre de navigation prend toute la largeur */
-  z-index: 1000;
-  /* Assure que la barre de navigation reste au-dessus des autres éléments */
+  z-index: 1000; /* S'assurer que la barre est au-dessus des autres éléments */
 }
 
+/* Logo */
 .logo h1 {
   margin: 0;
-  font-size: 1.8rem;
-  /* Légère augmentation de la taille du logo */
-  color: #333;
+  font-size: 2rem; /* Augmentation de la taille du logo */
+  color: #ffffff; /* Gris très foncé */
+  font-weight: bold;
+  letter-spacing: 1px; /* Espacement des lettres */
 }
 
+/* Conteneur des icônes */
 .icons {
   display: flex;
   align-items: center;
+  gap: 15px; /* Espacement entre les icônes */
 }
 
+/* Boutons dans la barre de navigation */
 .search-button,
 .cart-button,
 .menu-button {
   background: none;
   border: none;
-  margin-left: 10px;
   cursor: pointer;
-  padding: 15px;
-  font-size: 1.2rem;
+  padding: 10px;
+  font-size: 1.5rem; /* Taille des icônes */
+  color: #ffffff; /* Gris foncé pour les icônes */
 }
 
+/* Barre de recherche */
+.search-container {
+  position: relative;
+}
 
-/* Menu (masqué par défaut) */
+.search-input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-left: 10px;
+  width: 200px; /* Largeur de la barre de recherche */
+  transition: width 0.3s ease; /* Transition douce pour l'ouverture */
+}
+
+.search-input:focus {
+  width: 300px; /* Largeur étendue lorsque la barre est focalisée */
+  outline: none;
+}
+
+/* Résultats de recherche */
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  width: 100%; /* Assure que les résultats sont alignés avec la barre de recherche */
+}
+
+.search-results h2 {
+  margin: 0;
+  padding: 10px;
+  background-color: #f5f5f5; /* Fond légèrement gris */
+  border-bottom: 1px solid #ddd;
+}
+
+.search-results ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-results li {
+  padding: 10px;
+}
+
+.search-results a {
+  text-decoration: none;
+  color: #333;
+}
+
+.search-results a:hover {
+  background-color: #eee;
+}
+
+/* Menu */
 .menu {
   display: none;
   position: absolute;
-  /* Positionnement du menu */
   top: 100%;
-  /* Juste en dessous de la navbar */
   right: 0;
-  background-color: #fff;
+  background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 4px;
   min-width: 200px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 1001;
-  /* Assurer que le menu est au-dessus des autres éléments */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001; /* Assurer que le menu est au-dessus des autres éléments */
+  transition: opacity 0.3s ease;
 }
 
 /* Menu ouvert */
@@ -64,29 +119,26 @@
   display: block;
 }
 
-/* Styles supplémentaires pour les liens du menu */
+/* Styles pour les liens du menu */
 .menu ul {
   list-style: none;
-  /* Supprimer les puces */
   padding: 0;
   margin: 0;
 }
 
 .menu li {
-  margin-bottom: 10px;
-  color: #333;
-
-  /* Espace entre les éléments du menu */
+  margin-bottom: 0;
 }
 
 .menu a {
   display: block;
-  padding: 10px 20px;
+  padding: 12px 20px;
   text-decoration: none;
   color: #333;
+  font-size: 1rem;
+  transition: background-color 0.3s ease; /* Transition douce pour le survol */
 }
 
 .menu a:hover {
   background-color: #f5f5f5;
 }
-

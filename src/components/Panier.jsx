@@ -88,7 +88,6 @@ function Panier() {
     }
   };
 
-
   const handleSupprimerProduit = async (panierId) => { // Utilisez panierId
     try {
       const userData = JSON.parse(localStorage.getItem('user'));
@@ -176,6 +175,7 @@ function Panier() {
         }}>
         Passer la commande
       </button>
+      <ToastContainer />
     </div>
   );
 }

@@ -11,16 +11,16 @@ const RecherchePage = () => {
     materiaux: [],
     prixMin: '',
     prixMax: '',
-    categories: [],
+    categories: '',
     enStock: false,
   });
-  const [sort, setSort] = useState('prix-asc'); // Tri par défaut
+  const [sort, setSort] = useState('prix-asc');
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [categories, setCategories] = useState([]); // Pour les options de filtre de catégorie
+  const [categories, setCategories] = useState([]);
+  const [showFilters, setShowFilters] = useState(true);
 
   useEffect(() => {
-    // Récupérer les catégories pour les options de filtre
     axios.get('http://localhost:8000/api/categories')
       .then(response => {
         setCategories(response.data);
@@ -30,7 +30,7 @@ const RecherchePage = () => {
       });
   }, []);
 
-  const fetchData = async () => { // Déplacer fetchData ici
+  const fetchData = async () => {
     setIsLoading(true);
 
     try {
@@ -40,14 +40,13 @@ const RecherchePage = () => {
           materiaux: filters.materiaux.length > 0 ? filters.materiaux.join(',') : null,
           prixMin: filters.prixMin !== '' ? filters.prixMin : null,
           prixMax: filters.prixMax !== '' ? filters.prixMax : null,
-          categories: filters.categories.length > 0 ? filters.categories.join(',') : null,
+          categories: filters.categories,
           enStock: filters.enStock,
           sort,
         },
       });
 
       setProducts(response.data);
-      console.log(products);
     } catch (error) {
       console.error('Erreur lors de la recherche :', error);
     } finally {
@@ -56,117 +55,158 @@ const RecherchePage = () => {
   };
 
   useEffect(() => {
-    // Récupérer les catégories pour les options de filtre
-    axios.get('http://localhost:8000/api/categories')
-      .then(response => {
-        setCategories(response.data);
-      })
-      .catch(error => {
-        console.error('Erreur lors de la récupération des catégories :', error);
-      });
-  }, []);
-
-  useEffect(() => {
     fetchData();
-  }, [searchTerm, filters, sort]); // Dépendances inchangées
+  }, [searchTerm, filters, sort]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   const handleFilterChange = (filterName, filterValue) => {
-    setFilters(prevFilters => ({
-      ...prevFilters,
-      [filterName]: filterValue,
-    }));
+    setFilters(prevFilters => {
+      const updatedFilters = { ...prevFilters };
+
+      if (Array.isArray(prevFilters[filterName])) {
+        if (prevFilters[filterName].includes(filterValue)) {
+          updatedFilters[filterName] = prevFilters[filterName].filter(item => item !== filterValue);
+        } else {
+          updatedFilters[filterName] = [...prevFilters[filterName], filterValue];
+        }
+      } else {
+        updatedFilters[filterName] = filterValue;
+      }
+
+      return updatedFilters;
+    });
   };
 
   const handleSortChange = (event) => {
     setSort(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault(); // Empêcher le rechargement de la page
+  const handleSubmit = (event) => {
+    event.preventDefault();
     fetchData();
+    setShowFilters(false); // Masquer les filtres après la recherche
   };
+
+  const handleToggleFilters = () => {
+    setShowFilters(prevState => !prevState);
+  };
+
   return (
     <div className="recherche-page">
-      <form onSubmit={handleSubmit}> {/* Ajouter onSubmit */}
-        <input
-          type="text"
-          placeholder="Rechercher un produit..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
+      <form onSubmit={handleSubmit} className="search-form">
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Rechercher un produit..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
 
-        {/* Filtres */}
-        <div className="filters">
-          {/* Filtre par matériau */}
-          {/* ... (champs de sélection pour les matériaux) */}
+        {showFilters && (
+          <div className="filter-container">
+            <div className="filter-group">
+              <label htmlFor="materiaux">Matériaux :</label>
+              <div className="checkbox-group">
+                <div>
+                  <input 
+                    type="checkbox" 
+                    id="bois" 
+                    value="bois" 
+                    checked={filters.materiaux.includes('bois')} 
+                    onChange={(e) => handleFilterChange('materiaux', e.target.value)} 
+                  />
+                  <label htmlFor="bois">Bois</label>
+                </div>
+                <div>
+                  <input 
+                    type="checkbox" 
+                    id="metal" 
+                    value="metal" 
+                    checked={filters.materiaux.includes('metal')} 
+                    onChange={(e) => handleFilterChange('materiaux', e.target.value)} 
+                  />
+                  <label htmlFor="metal">Métal</label>
+                </div>
+                <div>
+                  <input 
+                    type="checkbox" 
+                    id="plastique" 
+                    value="plastique" 
+                    checked={filters.materiaux.includes('plastique')} 
+                    onChange={(e) => handleFilterChange('materiaux', e.target.value)} 
+                  />
+                  <label htmlFor="plastique">Plastique</label>
+                </div>
+              </div>
+            </div>
 
-          {/* Filtre par prix */}
-          <div>
-            <label htmlFor="prixMin">Prix min:</label>
-            <input
-              type="number"
-              id="prixMin"
-              value={filters.prixMin}
-              onChange={(e) => handleFilterChange('prixMin', e.target.value)}
-            />
+            <div className="filter-group">
+              <label htmlFor="prixMin">Prix min :</label>
+              <input
+                type="number"
+                id="prixMin"
+                value={filters.prixMin}
+                onChange={(e) => handleFilterChange('prixMin', e.target.value)}
+              />
+            </div>
+
+            <div className="filter-group">
+              <label htmlFor="prixMax">Prix max :</label>
+              <input
+                type="number"
+                id="prixMax"
+                value={filters.prixMax}
+                onChange={(e) => handleFilterChange('prixMax', e.target.value)}
+              />
+            </div>
+
+            <div className="filter-group">
+              <label htmlFor="categories">Catégories :</label>
+              <select
+                id="categories"
+                value={filters.categories}
+                onChange={(e) => handleFilterChange('categories', e.target.value)}
+              >
+                <option value="">Toutes les catégories</option>
+                {categories.map(category => (
+                  <option key={category.categoryId} value={category.categoryId}>
+                    {category.categoryName}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="filter-group">
+              <input
+                type="checkbox"
+                id="enStock"
+                checked={filters.enStock}
+                onChange={(e) => handleFilterChange('enStock', e.target.checked)}
+              />
+              <label htmlFor="enStock">Uniquement en stock</label>
+            </div>
           </div>
-          <div>
-            <label htmlFor="prixMax">Prix max:</label>
-            <input
-              type="number"
-              id="prixMax"
-              value={filters.prixMax}
-              onChange={(e) => handleFilterChange('prixMax', e.target.value)}
-            />
-          </div>
+        )}
 
-          {/* Filtre par catégorie */}
-          <div>
-            <label htmlFor="categories">Catégories:</label>
-            <select
-              id="categories"
-              multiple // Permettre la sélection multiple
-              value={filters.categories}
-              onChange={(e) => handleFilterChange('categories', Array.from(e.target.selectedOptions, option => option.value))}
-            >
-              {categories.map(category => (
-                <option key={category.categoryId} value={category.categoryId}>
-                  {category.categoryName}
-                </option>
-              ))}
+        <div className="sort-and-filters">
+          <div className="sort">
+            <label htmlFor="sort">Trier par :</label>
+            <select id="sort" value={sort} onChange={handleSortChange}>
+              <option value="prix-asc">Prix croissant</option>
+              <option value="prix-desc">Prix décroissant</option>
             </select>
           </div>
 
-          {/* Filtre par disponibilité */}
-          <div>
-            <input
-              type="checkbox"
-              id="enStock"
-              checked={filters.enStock}
-              onChange={(e) => handleFilterChange('enStock', e.target.checked)}
-            />
-            <label htmlFor="enStock">Uniquement en stock</label>
-          </div>
+          <button type="button" onClick={handleToggleFilters} className="show-filters-button">
+            {showFilters ? 'Masquer les filtres' : 'Afficher les filtres'}
+          </button>
         </div>
-
-        {/* Tri */}
-        <div className="sort">
-          <label htmlFor="sort">Trier par:</label>
-          <select id="sort" value={sort} onChange={handleSortChange}>
-            <option value="prix-asc">Prix croissant</option>
-            <option value="prix-desc">Prix décroissant</option>
-            {/* ... (autres options de tri) */}
-          </select>
-        </div>
-
-        <button type="submit">Rechercher</button>
       </form>
 
-      {/* Résultats de la recherche */}
       <div className="product-grid">
         {isLoading ? (
           <p>Chargement en cours...</p>
@@ -180,8 +220,8 @@ const RecherchePage = () => {
                   <p className="product-card-price">{product.prix} €</p>
                   <p className="product-card-stock">
                     {product.Stock > 0 ? "En stock" : "Stock épuisé"}
-                  </p>                
-                  </div>
+                  </p>
+                </div>
               </Link>
             ))
           ) : (
