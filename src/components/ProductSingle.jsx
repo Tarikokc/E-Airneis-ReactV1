@@ -51,10 +51,8 @@ const ProductSingle = () => {
   const handleAddToCart = async () => {
     try {
       const userData = JSON.parse(localStorage.getItem('user'));
-      // Vérification si l'utilisateur est connecté
       if (!userData || !userData.user || !userData.user.id) {
         console.error('Utilisateur non connecté');
-        // Rediriger ou afficher un message d'erreur
         return;
       }
       const userId = userData.user.id;
@@ -64,11 +62,9 @@ const ProductSingle = () => {
       console.log("Produit ajouté au panier avec succès !");
 
       if (response.status === 200) {
-        // Afficher le pop-up de succès
         toast.success('Le produit a été ajouté au panier !');
 
       } else {
-        // Gérer les erreurs de l'API si nécessaire
         console.error('Erreur lors de l\'ajout au panier:', response.data.error);
         toast.error(response.data.error || 'Une erreur est survenue.'); // Notification d'erreur
       }
