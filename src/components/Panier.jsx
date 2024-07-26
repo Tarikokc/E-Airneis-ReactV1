@@ -8,8 +8,10 @@ import { ImBin2 } from "react-icons/im";
 const baseUrl = '/img/';
 
 function Panier() {
-  const [panier, setPanier] = useState([]);
+  const [panier, setPanier] = useState([]); 
   const [userId, setUserId] = useState(null);
+  const [productId, setProductId] = useState(null);
+
   const navigate = useNavigate(); // Obtenir l'objet history
   const [totalTTC, setTotalTTC] = useState(0);
 
@@ -88,17 +90,40 @@ function Panier() {
     }
   };
 
-  const handleSupprimerProduit = async (panierId) => { // Utilisez panierId
+  // const handleSupprimerProduit = async (productId) => { // Utilisez panierId
+  //   try {
+  //     const userData = JSON.parse(localStorage.getItem('user'));
+  //     const userId = userData.user.id;
+
+  //     const response = await fetch(`http://localhost:8000/api/panier/${productId}/${userId}`, {
+  //       method: 'DELETE',
+  //     });
+
+  //     if (response.ok) {
+  //       setPanier(prevPanier => prevPanier.filter(p => p.panierId !== panierId));
+  //       toast.success('Produit supprimé du panier !');
+  //     } else {
+  //       console.error('Erreur lors de la suppression:', response.statusText);
+  //       toast.error('Erreur lors de la suppression du produit.');
+  //     }
+  //   } catch (error) {
+  //     console.error('Erreur lors de la requête:', error);
+  //     toast.error('Une erreur est survenue.');
+  //   }
+  // };
+
+  const handleSupprimerProduit = async (productId) => { 
     try {
       const userData = JSON.parse(localStorage.getItem('user'));
       const userId = userData.user.id;
 
-      const response = await fetch(`http://localhost:8000/api/panier/${panierId}/${userId}`, {
+      const response = await fetch(`http://localhost:8000/api/panier/${productId}/${userId}`, {
         method: 'DELETE',
       });
 
       if (response.ok) {
-        setPanier(prevPanier => prevPanier.filter(p => p.panierId !== panierId));
+        // Filtrer le panier en fonction du productId
+        setPanier(prevPanier => prevPanier.filter(p => p.productId !== productId)); 
         toast.success('Produit supprimé du panier !');
       } else {
         console.error('Erreur lors de la suppression:', response.statusText);
@@ -109,7 +134,6 @@ function Panier() {
       toast.error('Une erreur est survenue.');
     }
   };
-
   const calculerTotal = () => {
     const totalHT = panier.reduce((total, produit) => total + produit.prix * produit.quantite, 0);
     const tauxTVA = 0.2;
@@ -157,8 +181,8 @@ function Panier() {
                   handleModifierProduit(produit.productId, produit.quantite + 1);
                 }}>+</button>
               </div>
-              <button onClick={() => handleSupprimerProduit(produit.id)} className="supprimer-produit">
-                <ImBin2 />
+              <button onClick={() => handleSupprimerProduit(produit.productId)} className="supprimer-produit">
+                <ImBin2 /> 
               </button>
             </div>
           </li>

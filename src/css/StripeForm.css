@@ -28,7 +28,7 @@ form {
   
   /* Style du bouton désactivé */
  #payer:disabled {
-    background-color: #ddd; /* Couleur grise */
+    background-color: #ddd; 
     cursor: not-allowed;
   }
   
