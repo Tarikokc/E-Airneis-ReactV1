@@ -39,8 +39,15 @@ html, body {
     color: #9FA480; /* Teinte plus foncée du vert sauge pour le survol */
 }
 
+/* Styles pour les liens en ligne */
 .footer p {
     margin: 0;
-    color: #000000; /* Texte noir pour le pied de page */
+    color: #A1AA9B; /* Texte noir pour le pied de page */
     font-size: 0.9rem; /* Taille de police légèrement réduite pour plus de subtilité */
+    display: flex;
+    gap: 10px; /* Espace entre les liens */
+}
+
+.footer p span {
+    margin: 0 5px; /* Espacement entre les tirets et les liens */
 }

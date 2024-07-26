@@ -1,3 +1,5 @@
+/* App.css */
+
 .App {
   text-align: center;
 }
@@ -38,7 +40,9 @@ a:hover {
   color: #927e0e; /* Couleur vert sauge au survol */
 }
 
-
+.page-content {
+  margin-bottom: 60px; /* Ajustez la valeur pour correspondre à la hauteur du footer */
+}
 
 @keyframes App-logo-spin {
   from {
@@ -47,4 +51,49 @@ a:hover {
   to {
     transform: rotate(360deg);
   }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 30px;
+  background-color: #dee1dd; /* Fond blanc */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 60px;
+  width: 100%;
+  margin: 0; /* Assurez-vous que le footer est correctement positionné sans marge */
+  border-top: 1px solid #EAEAEA; /* Bordure supérieure légère pour la séparation */
+}
+
+.footer .icones {
+  display: flex;
+  gap: 10px;
+}
+
+.footer a {
+  display: flex;
+  color: #A1AA9B; /* Vert sauge pour les liens */
+  text-decoration: none; /* Retirer la décoration des liens */
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #9FA480; /* Teinte plus foncée du vert sauge pour le survol */
+}
+
+/* Styles pour les liens en ligne */
+.footer p {
+  margin: 0;
+  color: #A1AA9B; /* Texte noir pour le pied de page */
+  font-size: 0.9rem; /* Taille de police légèrement réduite pour plus de subtilité */
+  display: flex;
+  gap: 10px; /* Espace entre les liens */
+}
+
+.footer p span {
+  margin: 0 5px; /* Espacement entre les tirets et les liens */
 }

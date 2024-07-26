@@ -24,8 +24,8 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
         {/* Affichage conditionnel des liens */}
         {!isLoggedIn ? (
           <>
-            <li><Link to="/login" onClick={toggleMenu}>Se connecter</Link></li>
-            <li><Link to="/register" onClick={toggleMenu}>S'inscrire</Link></li>
+            <li><Link to="/login" onClick={toggleMenu}>Connexion</Link></li>
+            <li><Link to="/register" onClick={toggleMenu}>Inscription</Link></li>
           </>
         ) : (
           <>

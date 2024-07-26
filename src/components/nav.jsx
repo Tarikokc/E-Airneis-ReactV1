@@ -24,7 +24,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <Link to="/" className="logo">
-        <h1>AIRNEIS</h1>
+        <h1>ÀIRNEIS</h1>
       </Link>
 
       <div className="icons">
