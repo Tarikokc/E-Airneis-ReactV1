@@ -3,8 +3,8 @@ import axios from 'axios';
 import '../css/RegisterForm.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'; // Importez useNavigate
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const RegisterForm = () => {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
@@ -17,6 +17,12 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    // Validation des champs
+    if (!firstname || !lastname || !email || !password) {
+      toast.success('Tous les champs sont obligatoires !');
+      return; // Empêche la soumission du formulaire
+    }
+
     try {
       const response = await axios.post('http://localhost:8000/api/register', {
         firstname,
@@ -48,6 +54,8 @@ const RegisterForm = () => {
           value={firstname}
           onChange={(e) => setFirstname(e.target.value)}
           className="register-form-input"
+          required // <-- Ajoutez cet attribut
+
         />
         <label htmlFor="lastname" className="register-form-label">
           Nom*
@@ -58,6 +66,8 @@ const RegisterForm = () => {
           value={lastname}
           onChange={(e) => setLastname(e.target.value)}
           className="register-form-input"
+          required // <-- Ajoutez cet attribut
+
         />
         <label htmlFor="email" className="register-form-label">
           E-mail*
@@ -68,6 +78,8 @@ const RegisterForm = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="register-form-input"
+          required // <-- Ajoutez cet attribut
+
         />
         <label htmlFor="password" className="register-form-label">
           Mot de passe*
@@ -78,6 +90,8 @@ const RegisterForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="register-form-input"
+          required // <-- Ajoutez cet attribut
+
         />
         {error && <div className="register-form-error">{error}</div>}
         <button type="submit" className="register-form-button">
