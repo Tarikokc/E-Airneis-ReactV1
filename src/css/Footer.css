@@ -51,3 +51,9 @@ html, body {
 .footer p span {
     margin: 0 5px; /* Espacement entre les tirets et les liens */
 }
+
+@media (max-width: 768px) {
+    .footer {
+        display: none; /* Cacher le footer sur les écrans de 768px ou moins */
+    }
+}

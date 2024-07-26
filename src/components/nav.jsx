@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { VscSearch, VscThreeBars } from 'react-icons/vsc';
 import { ShoppingCart } from 'lucide-react';
 import '../css/Nav.css';
@@ -7,6 +7,7 @@ import Menu from './menu';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
   const navigate = useNavigate();
 
   const toggleMenu = () => {
@@ -20,6 +21,23 @@ function Navbar() {
   const handleCartClick = () => {
     navigate('/Panier'); // Rediriger vers la page Panier
   };
+
+  // Fonction pour fermer le menu lorsqu'on clique en dehors
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target) && !event.target.closest('.menu-button')) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    // Ajouter l'écouteur d'événements pour les clics en dehors
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Nettoyer l'écouteur d'événements lors du démontage du composant
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav className="navbar">
@@ -39,7 +57,9 @@ function Navbar() {
           <VscThreeBars />
         </button>
         {isMenuOpen && (
-          <Menu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+          <div ref={menuRef}>
+            <Menu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+          </div>
         )}
       </div>
     </nav>

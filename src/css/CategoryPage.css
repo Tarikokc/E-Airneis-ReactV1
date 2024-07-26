@@ -50,6 +50,8 @@
   overflow: hidden; /* Masque les débordements de l'image */
   text-decoration: none; /* Supprime le soulignement du lien */
   color: inherit; /* Hérite de la couleur du texte parent */
+  /* width: 50%; */
+  justify-items: center;
 }
 
 .product-card img {

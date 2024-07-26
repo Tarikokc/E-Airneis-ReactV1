@@ -63,7 +63,7 @@ const HomePage = () => {
           onClose={handleClosePopup}
         />
       )}
-      <h2>Venant des hautes terres d'Ecosse
+      <h2>Venant des hautes terres d'Écosse
         <br/>
         Nos Meubles sont IMMORTELS
       </h2>

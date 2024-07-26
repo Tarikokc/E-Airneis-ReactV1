@@ -96,11 +96,15 @@ const ProductSingle = () => {
               </div>
             </div>
             <div className="product-info">
+              <div className="np-stock">
+              <div className="name-price">
               <h1 className="product-name">{product.Nom}</h1>
               <p className="product-price">{product.prix} €</p>
+              </div>
               <p className="product-stock">
                 {product.Stock > 0 ? "En stock" : "Stock épuisé"}
               </p>
+              </div>
               <p className="product-description">{product.Description}</p>
               <button
                 onClick={handleAddToCart}

@@ -16,11 +16,6 @@
     max-width: 100%;
   }
   
-  h3 {
-    color: #000000;
-    font-size: 1rem; /* Texte noir */
-    font-weight: normal;
-  }
 
   /* Formulaire de contact */
   .contact .container .form {
