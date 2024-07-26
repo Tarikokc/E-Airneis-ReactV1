@@ -30,7 +30,6 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
         ) : (
           <>
             <li><Link to="/AccountSettings" onClick={toggleMenu}>Mes paramètres</Link></li>
-            <li onClick={handleLogout}>Déconnexion</li>
           </>
         )}
 
@@ -40,6 +39,12 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
         <li><Link to="/legal" onClick={toggleMenu}>Mentions légales</Link></li>
         <li><Link to="/contact" onClick={toggleMenu}>Contact</Link></li>
         <li><Link to="/about" onClick={toggleMenu}>À propos d’ÀIRNEIS</Link></li>
+
+        {isLoggedIn && (
+          <li onClick={handleLogout}>Déconnexion</li>
+        )}
+          
+        
       </ul>
     </div>
   );
