@@ -3,12 +3,11 @@ body {
   margin: 0;
   font-family: 'Montserrat', sans-serif; /* Une police moderne et lisible */
   line-height: 1.6;
-  background-color: #ffffff;   /* Fond blanc pour un look épuré */
+  background-color: #ffffff; /* Fond blanc pour un look épuré */
   color: #333;
   min-height: 100vh; /* Hauteur minimale de la fenêtre du navigateur */
   padding-top: 60px; /* Ajustez la valeur en fonction de la hauteur de votre navbar */
   padding-bottom: 80px; /* Ajustez la valeur en fonction de la hauteur de votre footer */
-
 }
 
 .home-page {
@@ -16,7 +15,6 @@ body {
   margin: 0 auto;
   padding: 20px;
   position: relative; /* Permet de positionner le carrousel par rapport à ce conteneur */
-
 }
 
 /* Navigation */
@@ -45,7 +43,6 @@ body {
 .carousel-container {
   margin-bottom: 30px;
   width: 100%; /* Largeur totale */
-  
 }
 
 .carousel-slide img {
@@ -130,6 +127,7 @@ body {
 .popup.show { /* Classe pour afficher le popup */
   opacity: 1;
 }
+
 .popup-content {
   text-align: center;
 }
@@ -147,4 +145,84 @@ body {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+}
+
+/* Media Queries pour les écrans plus petits */
+@media (max-width: 1200px) {
+  .home-page {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .navigation {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navigation a {
+    padding: 10px;
+  }
+
+  .carousel-slide img {
+    height: 400px; /* Réduit la hauteur pour les écrans moyens */
+  }
+
+  .category-grid {
+    gap: 15px;
+  }
+
+  .category-item img {
+    height: 200px; /* Réduit la hauteur des images de catégorie */
+  }
+
+  .product-item img {
+    height: 200px; /* Réduit la hauteur des images de produit */
+  }
+}
+
+@media (max-width: 768px) {
+  .category-grid, .product-grid {
+    grid-template-columns: 1fr; /* Une seule colonne pour les écrans petits */
+  }
+
+  .carousel-slide img {
+    height: 300px; /* Réduit la hauteur pour les petits écrans */
+  }
+
+  .home-page h2 {
+    font-size: 1.5rem; /* Réduit la taille du texte pour les petits écrans */
+    margin: 15px 0;
+  }
+
+  .popup {
+    width: 90%; /* Réduit la largeur du popup pour les petits écrans */
+    padding: 20px;
+  }
+
+  .popup button {
+    padding: 8px 16px; /* Réduit la taille du bouton pour les petits écrans */
+  }
+}
+
+@media (max-width: 576px) {
+  .home-page {
+    padding: 10px;
+  }
+
+  .carousel-slide img {
+    height: 250px; /* Réduit la hauteur pour les très petits écrans */
+  }
+
+  .category-item img, .product-item img {
+    height: 150px; /* Réduit la hauteur des images pour les très petits écrans */
+  }
+
+  .popup {
+    padding: 15px;
+  }
+
+  .popup button {
+    padding: 6px 12px; /* Réduit la taille du bouton pour les très petits écrans */
+  }
 }

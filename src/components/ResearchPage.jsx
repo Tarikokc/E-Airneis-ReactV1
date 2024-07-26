@@ -11,7 +11,7 @@ const RecherchePage = () => {
     materiaux: [],
     prixMin: '',
     prixMax: '',
-    categories: [],
+    categories: '',
     enStock: false,
   });
   const [sort, setSort] = useState('prix-asc');
@@ -40,7 +40,7 @@ const RecherchePage = () => {
           materiaux: filters.materiaux.length > 0 ? filters.materiaux.join(',') : null,
           prixMin: filters.prixMin !== '' ? filters.prixMin : null,
           prixMax: filters.prixMax !== '' ? filters.prixMax : null,
-          categories: filters.categories.length > 0 ? filters.categories.join(',') : null,
+          categories: filters.categories,
           enStock: filters.enStock,
           sort,
         },
@@ -90,22 +90,24 @@ const RecherchePage = () => {
     setShowFilters(false); // Masquer les filtres après la recherche
   };
 
-  const handleShowFilters = () => {
-    setShowFilters(true);
+  const handleToggleFilters = () => {
+    setShowFilters(prevState => !prevState);
   };
 
   return (
     <div className="recherche-page">
       <form onSubmit={handleSubmit} className="search-form">
-        <input
-          type="text"
-          placeholder="Rechercher un produit..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Rechercher un produit..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
 
         {showFilters && (
-          <div className="filters">
+          <div className="filter-container">
             <div className="filter-group">
               <label htmlFor="materiaux">Matériaux :</label>
               <div className="checkbox-group">
@@ -142,44 +144,40 @@ const RecherchePage = () => {
               </div>
             </div>
 
-            <div className="filter-group prix">
-              <div className="filter-group-item">
-                <label htmlFor="prixMin">Prix min :</label>
-                <input
-                  type="number"
-                  id="prixMin"
-                  value={filters.prixMin}
-                  onChange={(e) => handleFilterChange('prixMin', e.target.value)}
-                />
-              </div>
+            <div className="filter-group">
+              <label htmlFor="prixMin">Prix min :</label>
+              <input
+                type="number"
+                id="prixMin"
+                value={filters.prixMin}
+                onChange={(e) => handleFilterChange('prixMin', e.target.value)}
+              />
+            </div>
 
-              <div className="filter-group-item">
-                <label htmlFor="prixMax">Prix max :</label>
-                <input
-                  type="number"
-                  id="prixMax"
-                  value={filters.prixMax}
-                  onChange={(e) => handleFilterChange('prixMax', e.target.value)}
-                />
-              </div>
+            <div className="filter-group">
+              <label htmlFor="prixMax">Prix max :</label>
+              <input
+                type="number"
+                id="prixMax"
+                value={filters.prixMax}
+                onChange={(e) => handleFilterChange('prixMax', e.target.value)}
+              />
             </div>
 
             <div className="filter-group">
               <label htmlFor="categories">Catégories :</label>
-              <div className="checkbox-group">
+              <select
+                id="categories"
+                value={filters.categories}
+                onChange={(e) => handleFilterChange('categories', e.target.value)}
+              >
+                <option value="">Toutes les catégories</option>
                 {categories.map(category => (
-                  <div key={category.categoryId}>
-                    <input 
-                      type="checkbox" 
-                      id={category.categoryId} 
-                      value={category.categoryId} 
-                      checked={filters.categories.includes(String(category.categoryId))} 
-                      onChange={(e) => handleFilterChange('categories', e.target.value)} 
-                    />
-                    <label htmlFor={category.categoryId}>{category.categoryName}</label>
-                  </div>
+                  <option key={category.categoryId} value={category.categoryId}>
+                    {category.categoryName}
+                  </option>
                 ))}
-              </div>
+              </select>
             </div>
 
             <div className="filter-group">
@@ -194,22 +192,20 @@ const RecherchePage = () => {
           </div>
         )}
 
-        <div className="sort">
-          <label htmlFor="sort">Trier par :</label>
-          <select id="sort" value={sort} onChange={handleSortChange}>
-            <option value="prix-asc">Prix croissant</option>
-            <option value="prix-desc">Prix décroissant</option>
-          </select>
+        <div className="sort-and-filters">
+          <div className="sort">
+            <label htmlFor="sort">Trier par :</label>
+            <select id="sort" value={sort} onChange={handleSortChange}>
+              <option value="prix-asc">Prix croissant</option>
+              <option value="prix-desc">Prix décroissant</option>
+            </select>
+          </div>
+
+          <button type="button" onClick={handleToggleFilters} className="show-filters-button">
+            {showFilters ? 'Masquer les filtres' : 'Afficher les filtres'}
+          </button>
         </div>
-
-        <button type="submit">Rechercher</button>
       </form>
-
-      {!showFilters && (
-        <button onClick={handleShowFilters} className="show-filters-button">
-          Afficher les filtres
-        </button>
-      )}
 
       <div className="product-grid">
         {isLoading ? (

@@ -1,84 +1,110 @@
-*
-{
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    box-sizing: border-box;
-}
-.contact
-{
-    padding: 20px 40px;
-    width: 100%;
-}
-.contact .container
-{
-    padding: 10px 20px;
-    max-width: 100%;
-}
-.contact .container .form
-{
-    width: 400px;
-    background: #f6f6f6;
-    padding: 20px 30px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin: 0px auto;
-    border-top: 3px solid #fed700;
-    border-radius: 5px;
-}
-.contact .container .form h2
-{
-    color: #cd1e7c;
-    text-transform: uppercase;
-    font-size: 18px;
-    letter-spacing: 1px;
-    font-weight: 600;
-}
-.contact .container .form .box
-{
-    display: flex;
-    margin-top: 20px;
-    justify-content: space-between;
-}
-.contact .container .form .box .label h4
-{
-    margin-left: 30px;
-    color: #232323;
-    font-size: 14px;
-    font-weight: 600;
-    margin-top: 10px;
-}
-.contact .container .form .box .input input
-{
-    margin-right: 16px;
-    border: none;
-    outline: none;
-    background: none;
-    border-bottom: 2px solid #8a8a8a;
-    padding: 10px 20px;
-}
-.contact .container .form .box .input textarea
-{
-    margin-right: 30px;
-    border: none;
-    outline: none;
-    background: none;
-    border-bottom: 2px solid #8a8a8a;
-    padding: 10px 20px;
-    resize: none;
-}
-.contact .container .form button
-{
-    margin-top: 20px;
-    margin-left: 30px;
-    padding: 10px 30px;
-    color: #232323;
-    border: none;
-    outline: none;
-    background: none;
-    background: #fed700;
-    cursor: pointer;
-}
+/* Contact.css */
 
-.success{
-    color : green;
-}
+/* Style général de la page de contact */
+.contact {
+    margin: 0 auto;
+    padding: 2rem;
+    color: #000000; /* Texte noir */
+    width: 100%;
+    max-width: 1200px; /* Largeur maximale */
+    background: #dee1dd; /* Fond gris clair */
+  }
+  
+  /* Conteneur principal */
+  .contact .container {
+    padding: 1rem;
+    max-width: 100%;
+  }
+  
+  h3 {
+    color: #000000;
+    font-size: 1rem; /* Texte noir */
+    font-weight: normal;
+  }
+
+  /* Formulaire de contact */
+  .contact .container .form {
+    width: 100%;
+    max-width: 600px; /* Largeur maximale du formulaire */
+    background: #ffffff; /* Fond blanc */
+    padding: 2rem;
+    border: 1px solid #ddd; /* Bordure douce */
+    border-radius: 8px; /* Coins arrondis modernes */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+    margin: 0 auto;
+
+  }
+  
+  /* Titre du formulaire */
+  .contact .container .form h2 {
+    color: #A1AA9B; /* Vert sauge */
+    text-transform: uppercase;
+    font-size: 2rem; /* Taille de police plus grande */
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Conteneur des champs du formulaire */
+  .contact .container .form .box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Labels des champs */
+  .contact .container .form .box .label h4 {
+    color: #4A4A4A; /* Texte gris foncé */
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Champs de saisie */
+  .contact .container .form .box .input input,
+  .contact .container .form .box .input textarea {
+    border: 1px solid #ddd; /* Bordure douce */
+    border-radius: 8px; /* Coins arrondis modernes */
+    padding: 0.8rem 1rem;
+    font-size: 0.875rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transition douce */
+  }
+  
+  .contact .container .form .box .input input:focus,
+  .contact .container .form .box .input textarea:focus {
+    border-color: #B2AC88; /* Bordure au focus */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au focus */
+  }
+  
+  /* Bouton d'envoi */
+  .contact .container .form button {
+    padding: 0.8rem 1.5rem;
+    background-color: #A1AA9B; /* Vert sauge */
+    color: #FFFFFF; /* Texte blanc */
+    border: none;
+    border-radius: 8px; /* Coins arrondis modernes */
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transition douce */
+    margin-top: 1rem;
+    align-self: flex-start; /* Aligne le bouton à gauche */
+  }
+  
+  /* Bouton d'envoi au survol */
+  .contact .container .form button:hover {
+    background-color: #889480; /* Vert sauge plus foncé */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  }
+  
+  /* Messages d'état */
+  .contact .container .form .success {
+    color: #61b25a; /* Vert pour les succès */
+    margin-top: 1rem;
+  }
+  
+  .contact .container .form .error {
+    color: #61764B; /* Rouge pour les erreurs */
+    margin-top: 0.5rem;
+  }
+  

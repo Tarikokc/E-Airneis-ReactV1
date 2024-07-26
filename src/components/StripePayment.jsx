@@ -71,7 +71,7 @@ function StripePayment() {
         </Elements>
       )}
       {errorMessage && <div>{errorMessage}</div>}
-      <button type="submit" disabled={!stripe || !elements || !clientSecret}>
+      <button type="submit" id="payer" disabled={!stripe || !elements || !clientSecret}>
         Payer
       </button>
     </form>

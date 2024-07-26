@@ -51,73 +51,71 @@ const Contact = () => {
   };
 
   return (
-    <>
-      <div className='contact'>
-        <div className='container'>
-          <div className='form'>
-            <h2>Contactez-nous</h2>
-            <form method='POST' onSubmit={handleSubmit}> 
-              <div className='box'>
-                <div className='label'>
-                  <h4>Nom*</h4>
-                </div>
-                <div className='input'>
-                  <input type='text' placeholder='Nom' value={formData.name} name='name' onChange={handleChange} />
-                  {serverErrors.name && <p className="error">{serverErrors.name}</p>} 
-                </div>
+    <div className='contact'>
+      <div className='container'>
+        <div className='form'>
+          <h2>Contactez-nous</h2>
+          <form method='POST' onSubmit={handleSubmit}> 
+            <div className='box'>
+              <div className='label'>
+                <h3>Nom*</h3>
               </div>
-
-              <div className='box'>
-                <div className='label'>
-                  <h4>E-mail*</h4>
-                </div>
-                <div className='input'>
-                  <input type='email' placeholder='E-mail' value={formData.email} name='email' onChange={handleChange} />
-                  {serverErrors.email && <p className="error">{serverErrors.email}</p>}
-                </div>
+              <div className='input'>
+                <input type='text' placeholder='Nom' value={formData.name} name='name' onChange={handleChange} />
+                {serverErrors.name && <p className="error">{serverErrors.name}</p>} 
               </div>
+            </div>
 
-              <div className='box'>
-                <div className='label'>
-                  <h4>Sujet*</h4>
-                </div>
-                <div className='input'>
-                  <input type='text' placeholder='Sujet' value={formData.subject} name='subject' onChange={handleChange} />
-                  {serverErrors.subject && <p className="error">{serverErrors.subject}</p>}
-                </div>
+            <div className='box'>
+              <div className='label'>
+                <h3>E-mail*</h3>
               </div>
-
-              <div className='box'>
-                <div className='label'>
-                  <h4>Message*</h4>
-                </div>
-                <div className='input'>
-                  <textarea placeholder='Message' value={formData.message} name='message' onChange={handleChange} />
-                  {serverErrors.message && <p className="error">{serverErrors.message}</p>}
-                </div>
+              <div className='input'>
+                <input type='email' placeholder='E-mail' value={formData.email} name='email' onChange={handleChange} />
+                {serverErrors.email && <p className="error">{serverErrors.email}</p>}
               </div>
-              
-              {/* Le composant ReCAPTCHA doit être adapté à votre configuration spécifique
-              <ReCAPTCHA 
-                sitekey="VOTRE_CLE_SITE_RECAPTCHA"
-                onChange={(value) => {
-                  // Gérez la valeur de reCAPTCHA ici (si nécessaire)
-                }}
-              /> */}
+            </div>
 
-              <button type='submit' disabled={isLoading}>
-                {isLoading ? 'Envoi...' : 'Envoyer'}
-              </button>
+            <div className='box'>
+              <div className='label'>
+                <h3>Sujet*</h3>
+              </div>
+              <div className='input'>
+                <input type='text' placeholder='Sujet' value={formData.subject} name='subject' onChange={handleChange} />
+                {serverErrors.subject && <p className="error">{serverErrors.subject}</p>}
+              </div>
+            </div>
 
-              {/* Affichage des messages d'état */}
-              {isLoading && <p>Envoi en cours...</p>}
-              {success && <p className="success">Message envoyé avec succès !</p>}
-              {serverErrors.general && <p className="error">{serverErrors.general}</p>}
-            </form>
-          </div>
+            <div className='box'>
+              <div className='label'>
+                <h3>Message*</h3>
+              </div>
+              <div className='input'>
+                <textarea placeholder='Message' value={formData.message} name='message' onChange={handleChange} />
+                {serverErrors.message && <p className="error">{serverErrors.message}</p>}
+              </div>
+            </div>
+            
+            {/* Le composant ReCAPTCHA doit être adapté à votre configuration spécifique
+            <ReCAPTCHA 
+              sitekey="VOTRE_CLE_SITE_RECAPTCHA"
+              onChange={(value) => {
+                // Gérez la valeur de reCAPTCHA ici (si nécessaire)
+              }}
+            /> */}
+
+            <button type='submit' disabled={isLoading}>
+              {isLoading ? 'Envoi...' : 'Envoyer'}
+            </button>
+
+            {/* Affichage des messages d'état */}
+            {isLoading && <p>Envoi en cours...</p>}
+            {success && <p className="success">Message envoyé avec succès !</p>}
+            {serverErrors.general && <p className="error">{serverErrors.general}</p>}
+          </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

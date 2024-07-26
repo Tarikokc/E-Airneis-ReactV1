@@ -15,7 +15,7 @@ html, body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px 15px 30px;
-    background-color: #FFFFFF; /* Fond blanc */
+    background-color: #dee1dd; /* Fond blanc */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 60px;
     width: 100%;
@@ -30,7 +30,7 @@ html, body {
 
 .footer a {
     display: flex;
-    color: #B2AC88; /* Vert sauge pour les liens */
+    color: #A1AA9B; /* Vert sauge pour les liens */
     text-decoration: none; /* Retirer la décoration des liens */
     transition: color 0.3s;
 }

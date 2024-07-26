@@ -1,18 +1,9 @@
 /* Styles généraux */
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #494949; 
-  color: #333; /* Texte plus sombre pour une meilleure lisibilité */
-  line-height: 1.6; /* Espacement des lignes amélioré */
-}
-
 .container {
   max-width: 960px;
   margin: 20px auto;
   padding: 30px; /* Espacement interne augmenté */
-  background-color: #3b3b3b;
   border-radius: 8px; /* Coins légèrement arrondis */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre plus douce */
 }
 
 /* Styles de la barre latérale */

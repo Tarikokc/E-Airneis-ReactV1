@@ -15,7 +15,7 @@ form {
   }
   
   /* Style du bouton */
-  button[type="submit"] {
+ #payer {
     background-color: #4CAF50; /* Couleur verte */
     color: white;
     padding: 12px 20px;
@@ -27,7 +27,7 @@ form {
   }
   
   /* Style du bouton désactivé */
-  button[type="submit"]:disabled {
+ #payer:disabled {
     background-color: #ddd; /* Couleur grise */
     cursor: not-allowed;
   }

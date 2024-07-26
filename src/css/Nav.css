@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px; /* Ajustement de l'espacement */
-  background-color: #ffffff; /* Fond blanc */
+  background-color: #A1AA9B; /* Fond blanc */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
   position: fixed; /* Fixe la barre en haut */
   top: 0;
@@ -17,7 +17,7 @@
 .logo h1 {
   margin: 0;
   font-size: 2rem; /* Augmentation de la taille du logo */
-  color: #222; /* Gris très foncé */
+  color: #ffffff; /* Gris très foncé */
   font-weight: bold;
   letter-spacing: 1px; /* Espacement des lettres */
 }
@@ -38,7 +38,7 @@
   cursor: pointer;
   padding: 10px;
   font-size: 1.5rem; /* Taille des icônes */
-  color: #333; /* Gris foncé pour les icônes */
+  color: #ffffff; /* Gris foncé pour les icônes */
 }
 
 /* Barre de recherche */
