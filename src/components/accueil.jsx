@@ -4,7 +4,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Popup from './popUp'; // Importez le composant Popup
+import Popup from './popUp';
 
 const baseUrl = '/img/';
 
@@ -13,7 +13,7 @@ const HomePage = () => {
   const [categories, setCategories] = useState([]);
   const defaultImage = baseUrl + 'React-JS';
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showPopup, setShowPopup] = useState(false); // Etat pour afficher/cacher le popup
+  const [showPopup, setShowPopup] = useState(false); 
 
   useEffect(() => {
     axios.get('http://localhost:8000/api/produits')
@@ -30,11 +30,10 @@ const HomePage = () => {
       .catch(error => {
         console.error('Erreur lors de la récupération des catégories :', error);
       });
-    // Vérification de l'état de connexion au chargement initial
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       setIsLoggedIn(true);
-      setShowPopup(true); // Afficher le popup si l'utilisateur est connecté
+      setShowPopup(true); 
     }
 
   }, []);
@@ -59,7 +58,7 @@ const HomePage = () => {
 
       {showPopup && (
         <Popup
-          className={showPopup ? 'show' : ''} // Ajout de la classe conditionnelle
+          className={showPopup ? 'show' : ''} 
           message={`Bienvenue, ${JSON.parse(localStorage.getItem('user')).firstname}!`}
           onClose={handleClosePopup}
         />
@@ -68,18 +67,6 @@ const HomePage = () => {
         <br/>
         Nos Meubles sont IMMORTELS
       </h2>
-
-      {/* <div className="category-grid">
-        {categories.slice(0, 3).map((category) =>(
-          <div key={category.categoryId} className="category-item">
-            <img
-              src={category.defaultPhotoUrl ? baseUrl + category.defaultPhotoUrl : defaultImage}
-              alt={category.categoryName}
-            />
-            <h3>{category.categoryName}</h3>
-          </div>
-        ))}
-      </div> */}
 
       <div className="category-grid">
         {categories.slice(0, 3).map((category) => (
@@ -99,25 +86,13 @@ const HomePage = () => {
 
       <h2>Les Highlanders du moment</h2>
 
-      {/* <div className="product-grid">
-        {produits.map((produit) => ( // Itère sur tous les produits
-          <div key={produit.productId} className="product-item">
-            {produit.productPhotos.length > 0 && (
-              <img src={baseUrl + produit.productPhotos[0].photoUrl} alt={produit.Nom} />
-            )}
-            <h3>{produit.Nom}</h3>
-            <p>Prix : {produit.prix} €</p>
-          </div>
-        ))}
-      </div> */}
-
       <div className="product-grid">
-        {/* {produits.map((produit) => ( */}
-        {produits.slice(0, 3).map((produit) => ( // Affiche seulement les 3 premiers produits
+        {produits.slice(0, 3).map((produit) => ( 
+        // Affiche seulement les 3 premiers produits
 
-          <Link // Utilise Link pour rendre l'élément cliquable
+          <Link 
             key={produit.productId}
-            to={`/product/${produit.productId}`} // Redirige vers la page du produit
+            to={`/product/${produit.productId}`} 
             className="product-item"
           >
             {produit.productPhotos.length > 0 && (

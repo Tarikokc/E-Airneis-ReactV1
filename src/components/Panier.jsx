@@ -8,9 +8,12 @@ import { ImBin2 } from "react-icons/im";
 const baseUrl = '/img/';
 
 function Panier() {
-  const [panier, setPanier] = useState([]);
+  const [panier, setPanier] = useState([]); 
   const [userId, setUserId] = useState(null);
+  const [productId, setProductId] = useState(null);
+
   const navigate = useNavigate(); // Obtenir l'objet history
+  const [totalTTC, setTotalTTC] = useState(0);
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('user'));
@@ -87,17 +90,40 @@ function Panier() {
     }
   };
 
-  const handleSupprimerProduit = async (panierId) => { // Utilisez panierId
+  // const handleSupprimerProduit = async (productId) => { // Utilisez panierId
+  //   try {
+  //     const userData = JSON.parse(localStorage.getItem('user'));
+  //     const userId = userData.user.id;
+
+  //     const response = await fetch(`http://localhost:8000/api/panier/${productId}/${userId}`, {
+  //       method: 'DELETE',
+  //     });
+
+  //     if (response.ok) {
+  //       setPanier(prevPanier => prevPanier.filter(p => p.panierId !== panierId));
+  //       toast.success('Produit supprimé du panier !');
+  //     } else {
+  //       console.error('Erreur lors de la suppression:', response.statusText);
+  //       toast.error('Erreur lors de la suppression du produit.');
+  //     }
+  //   } catch (error) {
+  //     console.error('Erreur lors de la requête:', error);
+  //     toast.error('Une erreur est survenue.');
+  //   }
+  // };
+
+  const handleSupprimerProduit = async (productId) => { 
     try {
       const userData = JSON.parse(localStorage.getItem('user'));
       const userId = userData.user.id;
 
-      const response = await fetch(`http://localhost:8000/api/panier/${panierId}/${userId}`, {
+      const response = await fetch(`http://localhost:8000/api/panier/${productId}/${userId}`, {
         method: 'DELETE',
       });
 
       if (response.ok) {
-        setPanier(prevPanier => prevPanier.filter(p => p.panierId !== panierId));
+        // Filtrer le panier en fonction du productId
+        setPanier(prevPanier => prevPanier.filter(p => p.productId !== productId)); 
         toast.success('Produit supprimé du panier !');
       } else {
         console.error('Erreur lors de la suppression:', response.statusText);
@@ -108,17 +134,26 @@ function Panier() {
       toast.error('Une erreur est survenue.');
     }
   };
-
   const calculerTotal = () => {
     const totalHT = panier.reduce((total, produit) => total + produit.prix * produit.quantite, 0);
     const tauxTVA = 0.2;
     const montantTVA = totalHT * tauxTVA;
     const totalTTC = totalHT + montantTVA;
+
+    console.log("Total HT:", totalHT);        // Log du total HT
+    console.log("Montant TVA:", montantTVA);   // Log du montant de la TVA
+    console.log("Total TTC:", totalTTC);      // Log du total TTC
+
     return { totalTTC, montantTVA }; // Renvoyer un objet avec les deux valeurs
   };
 
+  useEffect(() => {
+    // Mettez à jour le total TTC lorsque le panier change
+    setTotalTTC(calculerTotal().totalTTC);
+  }, [panier]); // Déclenchez l'effet à chaque changement du panier
+
   const handlePasserCommande = () => {
-    navigate('/StripeForm'); 
+    navigate('/StripeForm');
   };
 
   return (
@@ -136,11 +171,17 @@ function Panier() {
               <p>{produit.Description}</p>
               <p>{produit.prix} €</p>
               <div className="quantite">
-                <button onClick={() => handleModifierProduit(produit.productId, produit.quantite - 1)}>-</button>
+                <button onClick={() => {
+                  console.log("Type de produit.quantite :", typeof produit.quantite);
+                  handleModifierProduit(produit.productId, produit.quantite - 1);
+                }}>-</button>
                 <span>{produit.quantite}</span>
-                <button onClick={() => handleModifierProduit(produit.productId, produit.quantite + 1)}>+</button>
+                <button onClick={() => {
+                  console.log("Type de produit.quantite :", typeof produit.quantite);
+                  handleModifierProduit(produit.productId, produit.quantite + 1);
+                }}>+</button>
               </div>
-              <button onClick={() => handleSupprimerProduit(produit.id)} className="supprimer-produit">
+              <button onClick={() => handleSupprimerProduit(produit.productId)} className="supprimer-produit">
                 <ImBin2 /> 
               </button>
             </div>
@@ -149,9 +190,13 @@ function Panier() {
       </ul>
       <div className="total">
         <h3>Total (TVA incluse) : {calculerTotal().totalTTC.toFixed(2)} €</h3>
-        <p>dont TVA : {calculerTotal().montantTVA.toFixed(2)} €</p> 
+        <p>dont TVA : {calculerTotal().montantTVA.toFixed(2)} €</p>
       </div>
-      <button className="passer-commande" onClick={handlePasserCommande}>
+      <button className="passer-commande" onClick={() => {
+        console.log("Total TTC transmis à Checkout:", totalTTC); // Log avant la navigation
+        sessionStorage.setItem('totalTTC', totalTTC);
+        navigate('/checkout');
+        }}>
         Passer la commande
       </button>
       <ToastContainer />

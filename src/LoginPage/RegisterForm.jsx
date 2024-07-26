@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../css/RegisterForm.css';
-import { Link, useNavigate } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Importez useNavigate
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterForm = () => {
   const [firstname, setFirstname] = useState('');
@@ -14,6 +17,12 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    // Validation des champs
+    if (!firstname || !lastname || !email || !password) {
+      toast.success('Tous les champs sont obligatoires !');
+      return; // Empêche la soumission du formulaire
+    }
+
     try {
       const response = await axios.post('http://localhost:8000/api/register', {
         firstname,
@@ -44,6 +53,9 @@ const RegisterForm = () => {
           id="firstname"
           value={firstname}
           onChange={(e) => setFirstname(e.target.value)}
+          className="register-form-input"
+          required // <-- Ajoutez cet attribut
+
         />
         <label htmlFor="lastname">
           Nom*
@@ -53,6 +65,9 @@ const RegisterForm = () => {
           id="lastname"
           value={lastname}
           onChange={(e) => setLastname(e.target.value)}
+          className="register-form-input"
+          required // <-- Ajoutez cet attribut
+
         />
         <label htmlFor="email">
           E-mail*
@@ -62,6 +77,9 @@ const RegisterForm = () => {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="register-form-input"
+          required // <-- Ajoutez cet attribut
+
         />
         <label htmlFor="password">
           Mot de passe*
@@ -71,6 +89,9 @@ const RegisterForm = () => {
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className="register-form-input"
+          required // <-- Ajoutez cet attribut
+
         />
         {error && <div className="register-form-error">{error}</div>}
         <button type="submit" className="register-form-button">

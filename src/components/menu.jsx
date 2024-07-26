@@ -6,17 +6,16 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Vérification de l'état de connexion au chargement initial
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       setIsLoggedIn(true);
     }
-  }, []); // Le tableau de dépendances vide assure que l'effet ne s'exécute qu'une fois
+  }, []); 
 
   const handleLogout = () => {
     localStorage.removeItem('user');
     setIsLoggedIn(false);
-    navigate('/'); // Redirection vers la page d'accueil après la déconnexion
+    navigate('/'); 
   };
 
   return (
@@ -30,8 +29,8 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
           </>
         ) : (
           <>
-            <li><Link to="/AccountSettings" onClick={toggleMenu}>Paramètres du compte</Link></li>
-            <li id="logout" onClick={handleLogout}>Déconnexion</li>
+            <li><Link to="/AccountSettings" onClick={toggleMenu}>Mes paramètres</Link></li>
+            <li onClick={handleLogout}>Déconnexion</li>
           </>
         )}
 

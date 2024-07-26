@@ -66,9 +66,8 @@ function AccountSettings() {
 
     fetchUserData();
   }, [navigate, reset]);
-  // Utilisez un autre useEffect pour afficher les valeurs dans la console
+
   useEffect(() => {
-    // Cet effet se déclenchera chaque fois que les valeurs du formulaire changent
     Object.keys(getValues()).forEach(field => {
       console.log(`Valeur du champ ${field} :`, getValues(field));
     });
@@ -103,7 +102,7 @@ function AccountSettings() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${userData.token}`
         },
-        body: data // Affichez les données brutes sans JSON.stringify
+        body: data 
       });
 
       if (!response.ok) {
@@ -394,7 +393,6 @@ function AccountSettings() {
                 )
                 }
 
-                {/* Bouton d'enregistrement (conditionnel si en mode édition) */}
                 {editing && (
                   <div className="buttons mt-3">
                     <button type="submit" className="btn btn-primary" disabled={isLoading}>Enregistrer les modifications</button>
