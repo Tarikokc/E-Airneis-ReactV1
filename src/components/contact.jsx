@@ -20,22 +20,28 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    console.log("Form submission started");  // Log de démarrage de la soumission
+  
     setIsLoading(true);
     setServerErrors({}); 
-
+  
     try {
+      console.log("Sending data to the server:", formData);  // Log des données envoyées
+  
       const response = await fetch('http://localhost:8000/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-
+  
       if (response.ok) {
+        console.log("Server responded with success");  // Log de succès
         setSuccess(true);
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
         const data = await response.json();
+        console.log("Server responded with errors:", data);  // Log des erreurs du serveur
         if (data.error) {
           setServerErrors(data.error); 
         } else {
@@ -43,12 +49,14 @@ const Contact = () => {
         }
       }
     } catch (error) {
-      console.error("Erreur lors de l'envoi du message:", error);
+      console.error("Network error occurred:", error);  // Log des erreurs réseau
       setServerErrors({ general: 'Erreur réseau. Veuillez réessayer.' });
     } finally {
       setIsLoading(false);
+      console.log("Form submission finished");  // Log de fin de soumission
     }
   };
+  
 
   return (
     <div className='contact'>

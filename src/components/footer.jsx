@@ -1,11 +1,16 @@
 import React from 'react';
 import { AiFillInstagram, AiFillLinkedin, AiFillFacebook } from 'react-icons/ai'; 
 import "../css/Footer.css";
+import { Link, useNavigate } from 'react-router-dom';
 
 function Footer() {
+  const navigate = useNavigate();
     return (
         <footer className="footer">
-            <p>CGU - Mentions légales - Contact</p>
+            <p> <Link to="/cgu">CGU</Link> - <Link to="/legal">Mentions légales</Link> - <Link to="/contact">Contact</Link> </p>
+
+
+         
             <div className="icones"> 
                 <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
                     <AiFillInstagram />
