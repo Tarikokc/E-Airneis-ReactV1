@@ -18,6 +18,7 @@
   margin: 0;
   font-size: 2rem; /* Augmentation de la taille du logo */
   color: #ffffff; /* Gris très foncé */
+  font-family: 'Montserrat', sans-serif; /* Une police moderne et lisible */
   font-weight: bold;
   letter-spacing: 1px; /* Espacement des lettres */
 }
@@ -62,44 +63,6 @@
   outline: none;
 }
 
-/* Résultats de recherche */
-.search-results {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
-  width: 100%; /* Assure que les résultats sont alignés avec la barre de recherche */
-}
-
-.search-results h2 {
-  margin: 0;
-  padding: 10px;
-  background-color: #f5f5f5; /* Fond légèrement gris */
-  border-bottom: 1px solid #ddd;
-}
-
-.search-results ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.search-results li {
-  padding: 10px;
-}
-
-.search-results a {
-  text-decoration: none;
-  color: #333;
-}
-
-.search-results a:hover {
-  background-color: #eee;
-}
 
 /* Menu */
 .menu {
@@ -138,7 +101,8 @@
   text-decoration: none;
   color: #333;
   font-size: 1rem;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease; /* Transition douce pour le survol */
+  font-family: "Montserrat";
 }
 
 .menu a:hover {

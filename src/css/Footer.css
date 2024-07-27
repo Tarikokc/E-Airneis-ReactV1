@@ -17,7 +17,7 @@ html, body {
     padding: 15px 20px 15px 30px;
     background-color: #dee1dd; /* Fond blanc */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 60px;
+    height: 40px;
     width: 100%;
     margin: 0; /* Assurez-vous que le footer est correctement positionné sans marge */
     border-top: 1px solid #EAEAEA; /* Bordure supérieure légère pour la séparation */
@@ -50,4 +50,10 @@ html, body {
 
 .footer p span {
     margin: 0 5px; /* Espacement entre les tirets et les liens */
+}
+
+@media (max-width: 768px) {
+    .footer {
+        display: none; /* Cacher le footer sur les écrans de 768px ou moins */
+    }
 }

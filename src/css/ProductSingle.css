@@ -1,106 +1,220 @@
+/* Conteneur général du produit */
 .product-container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    padding-top: 150px;
-  }
-  
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
+  margin-bottom: 60px;
+  max-width: 1200px; /* Largeur maximale */
+  background-color: #ffffff; /* Fond gris clair */
+}
+
+/* Détails du produit */
+.product-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  flex-wrap: wrap; /* Pour la responsivité */
+}
+
+/* Images du produit */
+.product-images {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+/* Carrousel d'images du produit */
+.product-image-carousel {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 8px; /* Coins arrondis */
+  justify-content: center;
+}
+
+.product-image-carousel img {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Informations du produit */
+.product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+/* Nom du produit */
+.product-name {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Div pour grouper nom et prix */
+.name-price {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  flex-direction: row-reverse;
+}
+
+/* Prix du produit */
+.product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  align-items: right;
+  text-align: right;
+}
+
+/* Stock du produit */
+.product-stock {
+  color: #61764B; /* Vert stock */
+  margin-bottom: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  text-align: right;
+}
+
+/* Description du produit */
+.product-description {
+  margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  text-align: left;
+}
+
+/* Bouton du produit */
+.product-button {
+  background-color: #A1AA9B; /* Vert sauge */
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.875rem;
+  color: #FFFFFF; /* Texte blanc */
+  border-radius: 8px; /* Coins arrondis */
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transition douce */
+}
+
+.product-button.out-of-stock {
+  background-color: #d9534f; /* Rouge pour hors stock */
+  border: none;
+}
+
+/* Produits similaires */
+.similar-products {
+  margin-top: 2rem;
+}
+
+.similar-products h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Liste des produits similaires */
+.similar-products-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem; /* Espace entre les produits */
+}
+
+.similar-product {
+  flex: 0 0 30%;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd; /* Bordure douce */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  transition: box-shadow 0.3s; /* Transition douce */
+  overflow: hidden;
+  text-decoration: none;
+  color: #000000; /* Texte noir */
+}
+
+/* Produit similaire au survol */
+.similar-product:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au survol */
+}
+
+.similar-product img {
+  width: 100%;
+  height: auto;
+}
+
+.similar-product-name {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  font-weight: bold;
+}
+
+.similar-product-price {
+  font-size: 0.875rem;
+  color: #000000; /* Prix en couleur */
+}
+
+
+/* Styles responsives */
+@media (max-width: 768px) {
   .product-details {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    flex-direction: column;
   }
   
   .product-images {
-    flex: 1;
-    margin-right: 20px;
+    margin-right: 0;
+    margin-bottom: 1rem;
   }
-  
-  .product-image-carousel {
+
+  .name-price {
     display: flex;
-    overflow: hidden;
-    width: 100%;
+    justify-content: space-between; 
+    align-items: center; 
+    flex-direction: row;
   }
-  
-  .product-image-carousel img {
-    width: 100%;
-    flex-shrink: 0;
-  }
-  
+
   .product-info {
-    flex: 1;
-    padding: 20px;
-    border: 1px solid #eaeaea;
+    padding: 0rem;
   }
   
   .product-name {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
   }
-  
+
   .product-price {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
   }
-  
+
   .product-stock {
-    color: green;
-    margin-bottom: 10px;
+    font-size: 0.9rem;
+    text-align: left;
   }
-  
+
   .product-description {
-    margin-bottom: 20px;
+    font-size: 0.9rem;
   }
-  
+
   .product-button {
-    background-color: #f0c14b;
-    border: 1px solid #a88734;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+    font-size: 0.75rem;
+    padding: 0.6rem 1.2rem;
   }
-  
-  .product-button.out-of-stock {
-    background-color: #d9534f;
-    border: none;
-  }
-  
-  .similar-products {
-    margin-top: 40px;
-  }
-  
+
   .similar-products h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 1.2rem;
   }
-  
-  .similar-products-list {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  .similar-product {
-    flex: 0 0 30%;
-    margin-bottom: 20px;
-  }
-  
-  .similar-product img {
-    width: 100%;
-    height: auto;
-  }
-  
+
   .similar-product-name {
-    font-size: 18px;
-    margin: 10px 0;
+    font-size: 0.875rem;
   }
-  
+
   .similar-product-price {
-    font-size: 16px;
+    font-size: 0.75rem;
   }
-  
+}
+
   /* Styles de base du carrousel */
 .product-image-carousel {
   position: relative; /* Pour positionner les boutons par rapport à l'image */

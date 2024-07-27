@@ -1,12 +1,44 @@
 /* App.css */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../public/assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+
 
 .App {
   text-align: center;
+
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+h2 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-family: 'Montserrat', sans-serif;
+  color: #727E66;
+  text-align: center;
+  font-weight: bold;
+  /* Titre plus prononcé */
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: #727E66;
+  text-align: center;
+  font-weight: bold;  
+  font-size: 1.5rem;
+  padding : 10px;
+}
+
+div {
+  font-family: 'Montserrat', sans-serif;
+  color: #000000;
+  text-align: center;  
+  font-size: 1.5rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -40,9 +72,6 @@ a:hover {
   color: #927e0e; /* Couleur vert sauge au survol */
 }
 
-.page-content {
-  margin-bottom: 60px; /* Ajustez la valeur pour correspondre à la hauteur du footer */
-}
 
 @keyframes App-logo-spin {
   from {
@@ -82,7 +111,7 @@ a:hover {
 }
 
 .footer a:hover {
-  color: #9FA480; /* Teinte plus foncée du vert sauge pour le survol */
+  color: #000000; /* Teinte plus foncée du vert sauge pour le survol */
 }
 
 /* Styles pour les liens en ligne */
