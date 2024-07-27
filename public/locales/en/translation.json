@@ -1,0 +1,58 @@
+{
+    "navbar": {
+      "home": "Home",
+      "about": "About Us",
+      "contact": "Contact",
+      "language": "Language"
+    },
+    "home": {
+      "title": "Welcome to E-Airneis",
+      "subtitle": "Your one-stop shop for all your needs",
+      "description": "We offer a wide range of products and services to meet your every need. From electronics to home goods, we have it all.",
+      "shopNow": "Shop Now"
+    },
+    "about": {
+      "title": "About Us",
+      "description": "E-Airneis is a leading online retailer committed to providing high-quality products and exceptional customer service.",
+      "mission": "Our mission is to make your life easier by offering a convenient and enjoyable shopping experience.",
+      "values": "We value integrity, innovation, and customer satisfaction."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Have a question or need assistance? We're here to help.",
+      "email": "Email:",
+      "phone": "Phone:",
+      "address": "Address:",
+      "submit": "Submit"
+    },
+    "footer": {
+      "copyright": "Copyright © 2023 E-Airneis. All rights reserved."
+    },
+    "products": {
+        "title": "Our Products",
+        "categories": {
+        "electronics": "Electronics",
+        "clothing": "Clothing",
+        "home": "Home & Garden",
+        "beauty": "Beauty & Personal Care"
+        }
+    },
+    "product": {
+        "description": "Product Description",
+        "details": "Product Details",
+        "reviews": "Customer Reviews",
+        "addToCart": "Add to Cart"
+    },
+    "cart": {
+        "title": "Your Cart",
+        "empty": "Your cart is empty.",
+        "checkout": "Proceed to Checkout"
+    },
+    "checkout": {
+        "title": "Checkout",
+        "shipping": "Shipping Information",
+        "payment": "Payment Method",
+        "confirm": "Confirm Order"
+    }
+}
+
