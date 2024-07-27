@@ -13,7 +13,7 @@ const HomePage = () => {
   const [categories, setCategories] = useState([]);
   const defaultImage = baseUrl + 'React-JS';
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showPopup, setShowPopup] = useState(false); 
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     axios.get('http://localhost:8000/api/produits')
@@ -33,7 +33,7 @@ const HomePage = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       setIsLoggedIn(true);
-      setShowPopup(true); 
+      setShowPopup(true);
     }
 
   }, []);
@@ -46,7 +46,16 @@ const HomePage = () => {
     <div className="home-page">
 
       {/* Carrousel principal */}
-      <Carousel showArrows={true} infiniteLoop={true} autoPlay={true} interval={3000} dynamicHeight={true}>
+      <Carousel
+        showArrows={false}
+        infiniteLoop={true}
+        autoPlay={true}
+        interval={5000}
+        dynamicHeight={false}
+        showThumbs={false} // Cacher les aperçus des photos
+        showStatus={false} // Cacher le statut
+        emulateTouch={true} // Permet de faire défiler le carrousel sur les appareils tactiles
+      >
         {produits.map((produit) => (
           <div key={produit.productId} className="carousel-slide">
             {produit.productPhotos.length > 0 && (
@@ -58,54 +67,54 @@ const HomePage = () => {
 
       {showPopup && (
         <Popup
-          className={showPopup ? 'show' : ''} 
+          className={showPopup ? 'show' : ''}
           message={`Bienvenue, ${JSON.parse(localStorage.getItem('user')).firstname}!`}
           onClose={handleClosePopup}
         />
       )}
-      <h2>Venant des hautes terres d'Écosse
-        <br/>
-        Nos Meubles sont IMMORTELS
-      </h2>
 
-      <div className="category-grid">
-        {categories.slice(0, 3).map((category) => (
-          <Link
-            key={category.categoryId}
-            to={`/category/${category.categoryId}`}
-            className="category-item"
-          >
-            <img
-              src={category.defaultPhotoUrl ? baseUrl + category.defaultPhotoUrl : defaultImage}
-              alt={category.categoryName}
-            />
-            <h3>{category.categoryName}</h3>
-          </Link>
-        ))}
+        <h3 id="slogan">VENANT DES HAUTES TERRES D'ECOSSE
+          <br />
+          NOS MEUBLES SONT IMMORTELS
+        </h3>
+
+        <div className="category-grid">
+          {categories.slice(0, 3).map((category) => (
+            <Link
+              key={category.categoryId}
+              to={`/category/${category.categoryId}`}
+              className="category-item"
+            >
+              <img
+                src={category.defaultPhotoUrl ? baseUrl + category.defaultPhotoUrl : defaultImage}
+                alt={category.categoryName}
+              />
+              <h3>{category.categoryName}</h3>
+            </Link>
+          ))}
+        </div>
+
+        <h2>Les Highlanders du moment</h2>
+
+        <div className="product-grid">
+          {produits.slice(0, 3).map((produit) => (
+            // Affiche seulement les 3 premiers produits
+
+            <Link
+              key={produit.productId}
+              to={`/product/${produit.productId}`}
+              className="product-item"
+            >
+              {produit.productPhotos.length > 0 && (
+                <img src={baseUrl + produit.productPhotos[0].photoUrl} alt={produit.Nom} />
+              )}
+              <h3>{produit.Nom}</h3>
+              {/* <p>Prix : {produit.prix} €</p> */}
+            </Link>
+          ))}
+
+        </div>
       </div>
-
-      <h2>Les Highlanders du moment</h2>
-
-      <div className="product-grid">
-        {produits.slice(0, 3).map((produit) => ( 
-        // Affiche seulement les 3 premiers produits
-
-          <Link 
-            key={produit.productId}
-            to={`/product/${produit.productId}`} 
-            className="product-item"
-          >
-            {produit.productPhotos.length > 0 && (
-              <img src={baseUrl + produit.productPhotos[0].photoUrl} alt={produit.Nom} />
-            )}
-            <h3>{produit.Nom}</h3>
-            <p>Prix : {produit.prix} €</p>
-          </Link>
-        ))}
-
-
-      </div>
-    </div>
   );
 };
 
