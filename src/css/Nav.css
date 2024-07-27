@@ -39,6 +39,8 @@
   padding: 10px;
   font-size: 1.5rem; /* Taille des icônes */
   color: #ffffff; /* Gris foncé pour les icônes */
+  position: relative; 
+
 }
 
 /* Barre de recherche */
@@ -136,9 +138,19 @@
   text-decoration: none;
   color: #333;
   font-size: 1rem;
-  transition: background-color 0.3s ease; /* Transition douce pour le survol */
+  transition: background-color 0.3s ease; 
 }
 
 .menu a:hover {
   background-color: #f5f5f5;
+}
+
+.cart-dot {
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  top: -0.5px; 
+  right: -3px;
 }
