@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { VscSearch, VscThreeBars } from 'react-icons/vsc';
 import { ShoppingCart } from 'lucide-react';
 import '../css/Nav.css';
