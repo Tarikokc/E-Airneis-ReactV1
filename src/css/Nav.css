@@ -40,6 +40,8 @@
   padding: 10px;
   font-size: 1.5rem; /* Taille des icônes */
   color: #ffffff; /* Gris foncé pour les icônes */
+  position: relative; 
+
 }
 
 /* Barre de recherche */
@@ -105,4 +107,14 @@
 
 .menu a:hover {
   background-color: #f5f5f5;
+}
+
+.cart-dot {
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  top: -0.5px; 
+  right: -3px;
 }

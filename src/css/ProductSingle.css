@@ -214,3 +214,38 @@
     font-size: 0.75rem;
   }
 }
+
+  /* Styles de base du carrousel */
+.product-image-carousel {
+  position: relative; /* Pour positionner les boutons par rapport à l'image */
+}
+
+.carousel-slides {
+  /* ... Vos styles pour les slides ... */
+}
+
+.carousel-slide {
+  display: none; /* Masquer toutes les diapositives par défaut */
+}
+
+.carousel-slide.active {
+  display: block; /* Afficher la diapositive active */
+}
+
+/* Styles des boutons de navigation */
+.carousel-prev,
+.carousel-next {
+  /* ... Vos styles pour les boutons ... */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* Centrer verticalement */
+  z-index: 10; /* Assurer que les boutons soient au-dessus de l'image */
+}
+
+.carousel-prev {
+  left: 10px; /* Placer à gauche de l'image avec une marge */
+}
+
+.carousel-next {
+  right: 10px; /* Placer à droite de l'image avec une marge */
+}

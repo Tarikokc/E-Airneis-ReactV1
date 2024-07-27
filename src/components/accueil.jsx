@@ -109,7 +109,7 @@ const HomePage = () => {
                 <img src={baseUrl + produit.productPhotos[0].photoUrl} alt={produit.Nom} />
               )}
               <h3>{produit.Nom}</h3>
-              {/* <p>Prix : {produit.prix} €</p> */}
+              <p>Prix : {produit.prix} €</p>
             </Link>
           ))}
 
