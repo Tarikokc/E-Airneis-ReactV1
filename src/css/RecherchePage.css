@@ -1,7 +1,7 @@
 /* Style général de la page */
 .recherche-page {
   margin: 0 auto;
-  padding: 2rem;
+  padding-top: 100px;
   color: #000000; /* Texte noir */
   width: 100%;
   max-width: 1200px; /* Largeur maximale */

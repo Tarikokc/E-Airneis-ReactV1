@@ -220,9 +220,6 @@
   position: relative; /* Pour positionner les boutons par rapport à l'image */
 }
 
-.carousel-slides {
-  /* ... Vos styles pour les slides ... */
-}
 
 .carousel-slide {
   display: none; /* Masquer toutes les diapositives par défaut */

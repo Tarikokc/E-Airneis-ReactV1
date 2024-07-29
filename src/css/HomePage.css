@@ -1,18 +1,14 @@
 /* Styles généraux */
 * {
   font-family: 'Montserrat', sans-serif;
-  /* Une police moderne et lisible */
 }
 
 .home-page {
-  font-family: 'Montserrat', sans-serif;
-  /* Une police moderne et lisible */
   margin: 0;
   padding: 30px 0;
-  /* Marge nulle et un peu de padding */
-  box-sizing: border-box; /* S'assurer que le padding est inclus dans la largeur */
+  box-sizing: border-box;
+  width: 100%;
 }
-
 
 /* Navigation */
 .navigation {
@@ -23,7 +19,6 @@
   justify-content: space-between;
   align-items: center;
   background-color: #f8f9fa;
-  /* Fond légèrement grisé */
 }
 
 .navigation a {
@@ -31,25 +26,22 @@
   color: #333;
   padding: 15px;
   transition: all 0.3s ease;
-  /* Transition sur tous les changements */
 }
 
 .navigation a:hover {
   color: #007bff;
-  /* Bleu Bootstrap au survol */
 }
 
 /* Carrousel principal */
 .carousel-container {
   margin-bottom: 30px;
   width: 100%;
-  /* Largeur totale */
+  height: 400px;
 }
 
 .carousel-slide img {
   width: 100%;
   height: 400px;
-  /* Hauteur plus importante pour un impact visuel */
   object-fit: cover;
 }
 
@@ -61,56 +53,44 @@
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  /* Responsive */
-  margin-bottom: 100px;
-  padding: 0 50px;
+  padding: 50px;
   justify-items: center;
-  box-sizing: border-box; /* S'assurer que le padding est inclus dans la largeur */
+  box-sizing: border-box;
+  gap: 1rem;
 }
 
 .category-item {
   text-align: center;
   border-radius: 8px;
-  /* Coins arrondis */
   overflow: hidden;
-  /* Cache les débordements d'image */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%; /* S'assurer que les éléments ne dépassent pas */
-  max-width: 400px; /* Largeur maximale */
-  display: flex;
-  flex-direction: column;
-  /* Ombre subtile */
+  width: 100%;
+  max-width: 400px;
 }
 
 .category-item img {
   width: 100%;
   height: 300px;
-  /* Hauteur légèrement augmentée */
   object-fit: cover;
   transition: transform 0.3s ease;
-  /* Effet de zoom au survol */
 }
 
 /* Grille de produits */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  /* Responsive */
   padding: 50px;
   justify-items: center;
-  box-sizing: border-box; /* S'assurer que le padding est inclus dans la largeur */
+  box-sizing: border-box;
 }
 
 .product-item {
   text-align: center;
   border-radius: 8px;
-  /* Coins arrondis */
   overflow: hidden;
-  /* Cache les débordements d'image */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Ombre subtile */
-  width: 100%; /* S'assurer que les éléments ne dépassent pas */
-  max-width: 400px; /* Largeur maximale */
+  width: 100%;
+  max-width: 400px;
 }
 
 .product-item a {
@@ -119,14 +99,8 @@
 }
 
 .product-item img {
-  text-align: center;
-  border-radius: 8px;
-  /* Coins arrondis */
-  overflow: hidden;
-  /* Cache les débordements d'image */
-  width: 100%; /* S'assurer que les éléments ne dépassent pas */
-  max-width: 400px; /* Largeur maximale */
-  height: 300px; /* Fixer la hauteur pour une mise en page cohérente */
+  width: 100%;
+  height: 300px;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
@@ -138,21 +112,15 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #f0f0f0;
-  /* Fond plus doux */
   padding: 30px;
   border-radius: 10px;
-  /* Coins arrondis */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  /* Ombre plus prononcée */
   z-index: 10;
   opacity: 0;
-  /* Initialement invisible */
   transition: opacity 0.3s ease-in-out;
-  /* Transition en douceur */
 }
 
 .popup.show {
-  /* Classe pour afficher le popup */
   opacity: 1;
 }
 
@@ -162,13 +130,11 @@
 
 .popup h2 {
   color: #333;
-  /* Couleur du texte plus foncée */
   margin-bottom: 15px;
 }
 
 .popup button {
   background-color: #4CAF50;
-  /* Couleur de fond du bouton */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -184,23 +150,23 @@
   }
 
   .carousel-slide img {
-    height: 350px; /* Ajuste la hauteur pour les écrans moyens */
+    height: 350px;
   }
 
   .category-item img, .product-item img {
-    height: 250px; /* Ajuste la hauteur pour les écrans moyens */
+    height: 250px;
   }
 
   #slogan {
-    padding: 30px; /* Ajuste le padding pour les écrans moyens */
+    padding: 30px;
   }
 
   #slogan h2 {
-    font-size: 1.8rem; /* Réduit la taille de la police */
+    font-size: 1.8rem;
   }
 
   .category-item h3, .product-item h3 {
-    font-size: 1.6rem; /* Réduit la taille de la police pour h3 */
+    font-size: 1.6rem;
   }
 }
 
@@ -215,49 +181,49 @@
   }
 
   .carousel-slide img {
-    height: 300px; /* Réduit la hauteur pour les écrans moyens */
+    height: 300px;
   }
 
   .category-item img, .product-item img {
-    height: 200px; /* Réduit la hauteur des images */
+    height: 200px;
   }
 
   #slogan {
-    padding: 25px; /* Ajuste le padding pour les écrans plus petits */
-    font-size: 18px; /* Réduit la taille de la police */
+    padding: 25px;
+    font-size: 18px;
   }
 
   h2 {
-    font-size: 1.6rem; /* Réduit encore la taille de la police */
+    font-size: 1.6rem;
   }
 
   .category-item h3, .product-item h3 {
-    font-size: 1.4rem; /* Réduit encore la taille de la police pour h3 */
+    font-size: 1.4rem;
   }
 }
 
 @media (max-width: 768px) {
   .category-grid, .product-grid {
-    grid-template-columns: 1fr; /* Une seule colonne pour les petits écrans */
-    gap: 20px; /* Espace entre les éléments */
-    padding: 0 10px; /* Réduit le padding pour les petits écrans */
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 10px;
   }
 
   .carousel-slide img {
-    height: 250px; /* Réduit la hauteur pour les petits écrans */
+    height: 250px;
   }
 
   #slogan {
     padding: 20px;
-    font-size: 16px; /* Réduit encore plus la taille de la police pour les très petits écrans */
+    font-size: 16px;
   }
 
   h2 {
-    font-size: 1.4rem; /* Réduit encore plus la taille de la police */
+    font-size: 1.4rem;
   }
 
   .category-item h3, .product-item h3 {
-    font-size: 1.2rem; /* Réduit encore plus la taille de la police pour h3 */
+    font-size: 1.2rem;
   }
 
   .popup {
