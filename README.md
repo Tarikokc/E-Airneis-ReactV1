@@ -10,6 +10,14 @@ Ce projet React constitue l'interface utilisateur (frontend) de l'application e-
 
 L'application devrait être accessible à l'adresse http://localhost:3000.
 
+## Fonctionnalités
+
+* **Navigation dans le catalogue :** Parcourir les produits par catégorie, filtrer et trier les résultats.
+* **Panier d'achat :** Ajouter, modifier et supprimer des articles du panier.
+* **Processus de paiement :** Passer une commande et effectuer le paiement en toute sécurité.
+* **Gestion du compte :** Créer un compte, se connecter, consulter l'historique des commandes, changer les informations utilisateur.
+* **Recherche de produit : ** Système de recherche intelligent.
+  
 ## Structure des dossiers
 
 *   **components/** : Contient les composants React réutilisables pour l'affichage des éléments de l'interface.
@@ -23,8 +31,6 @@ L'application devrait être accessible à l'adresse http://localhost:3000.
 ## Scripts disponibles
 
 *   `npm start` : Lance le serveur de développement.
-*   `npm run build` : Crée une version optimisée de l'application pour la production.
-*   `npm test` : Lance les tests unitaires (si vous en avez).
 
 ## Technologies utilisées
 
@@ -33,3 +39,10 @@ L'application devrait être accessible à l'adresse http://localhost:3000.
 ## Remarques
 
 *   Assurez-vous que le backend est en cours d'exécution pour que l'application fonctionne correctement.
+
+## Contributeurs
+
+* Tarik OUKACI
+* Maïssaâ HACHI
+* Hailé SAVADOUX
+* Mohamed-Ali OUACHANI
