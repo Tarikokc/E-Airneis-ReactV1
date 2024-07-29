@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../css/Panier.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate, useLocation } from 'react-router-dom'; // Importer useNavigate
+import { useNavigate, useLocation } from 'react-router-dom'; 
 import { ImBin2 } from "react-icons/im";
 
 const baseUrl = '/img/';
@@ -12,7 +12,7 @@ function Panier() {
   const [userId, setUserId] = useState(null);
   const [productId, setProductId] = useState(null);
 
-  const navigate = useNavigate(); // Obtenir l'objet history
+  const navigate = useNavigate();
   const [totalTTC, setTotalTTC] = useState(0);
   const location = useLocation();
 
@@ -108,7 +108,7 @@ function Panier() {
         
       );
       localStorage.setItem('guestCart', JSON.stringify(updatedPanier));
-      toast.success('Quantité mise à jour avec succès !'); // Toast de succès
+      toast.success('Quantité mise à jour avec succès !'); 
 
 
       setPanier(updatedPanier);
@@ -164,16 +164,17 @@ function Panier() {
     const montantTVA = totalHT * tauxTVA;
     const totalTTC = totalHT + montantTVA;
 
-    console.log("Total HT:", totalHT);        // Log du total HT
-    console.log("Montant TVA:", montantTVA);   // Log du montant de la TVA
-    console.log("Total TTC:", totalTTC);      // Log du total TTC
+    console.log("Total HT:", totalHT);       
+    console.log("Montant TVA:", montantTVA);   
+    console.log("Total TTC:", totalTTC);      
 
-    return { totalTTC, montantTVA }; // Renvoyer un objet avec les deux valeurs
+    return { totalTTC, montantTVA }; 
   };
 
   useEffect(() => {
-    // Mettez à jour le total TTC lorsque le panier change
     setTotalTTC(calculerTotal().totalTTC);
+    sessionStorage.setItem('panier', JSON.stringify(panier)); 
+    console.log("Panier mis à jour dans le sessionStorage:", panier); 
   }, [panier]); 
 
   const handlePasserCommande = () => {
@@ -218,7 +219,7 @@ function Panier() {
       <button className="passer-commande" onClick={() => {
         console.log("Total TTC transmis à Checkout:", totalTTC); 
         sessionStorage.setItem('totalTTC', totalTTC);
-        navigate('/checkout');
+        navigate('/checkout', { state: { panier } }); 
       }}>
         Passer la commande
       </button>

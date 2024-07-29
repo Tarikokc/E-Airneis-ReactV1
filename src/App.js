@@ -14,6 +14,7 @@ import Contact from './components/contact.jsx';
 import ProductSingle from './components/ProductSingle.jsx';
 import '@hotwired/stimulus'
 import OrderHistory from './components/orderHistory.jsx';
+import OrderDetail from './components/OrderDetail.jsx';
 import AccountSettings from './components/AccountSettings.jsx';
 // import Checkout from './components/StripePayment.jsx';
 import Checkout from './components/StripePayment.jsx';
@@ -40,15 +41,12 @@ function App() {
               <Route path="/product/:productId" element={<ProductSingle />} />
               <Route path="/category/:categoryId" element={<CategoryPage />} />
               <Route path="/menu" element={<Menu />} />
-              {/* <Route path="/search" element={<SearchBar />} /> */}
               <Route path="/recherche" element={<RecherchePage />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/orderDetail/:orderId" element={<OrderDetail />} />
               <Route path="/AccountSettings" element={<AccountSettings />} />
-              {/* <Route path="/Checkout" element={<Elements stripe={stripePromise}><Checkout /></Elements>} /> */}
               <Route path="/confirmation" element={<Confirmation />} />
               <Route path="/Checkout" element={<Elements stripe={stripePromise}><Checkout /></Elements>} />
-              {/* <Route path="/Checkout" element={<Checkout />} /> */}
-
               <Route path="/Panier" element={<Panier />} />
         
             </Routes>

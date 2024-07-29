@@ -49,6 +49,9 @@ function OrderHistory() {
   if (error) {
     return <div className="error-message">{error}</div>;
   }
+  const handleOrderClick = (orderId) => {
+    navigate(`/orderDetail/${orderId}`); // Rediriger vers /orderDetail/:orderId
+  };
 
   return (
     <div className="order-history-container">
@@ -57,8 +60,12 @@ function OrderHistory() {
         <div key={year} className="year-section">
           <h3>{year}</h3>
           <ul>
-            {orders.map(order => (
-              <li key={order.order_id}>
+            {orders.map((order) => (
+              <li
+                key={order.order_id}
+                onClick={() => handleOrderClick(order.order_id)}
+                className="order-item" 
+              >
                 <div className="order-details">
                   <p>Commande #{order.order_id} - {order.order_date}</p>
                   <p>Montant total: {parseFloat(order.total_amount).toFixed(2)} €</p>
@@ -71,5 +78,4 @@ function OrderHistory() {
     </div>
   );
 }
-
 export default OrderHistory;
