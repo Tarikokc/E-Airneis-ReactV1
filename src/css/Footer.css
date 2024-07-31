@@ -1,12 +1,8 @@
-/* Footer.css */
-
-/* Assurez-vous que le body et html ont une hauteur de 100% */
 html, body {
     height: 100%;
     margin: 0;
 }
 
-/* Styles pour le footer fixe */
 .footer {
     position: fixed;
     bottom: 0;
@@ -15,12 +11,12 @@ html, body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px 15px 30px;
-    background-color: #dee1dd; /* Fond blanc */
+    background-color: #dee1dd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 40px;
     width: 100%;
-    margin: 0; /* Assurez-vous que le footer est correctement positionné sans marge */
-    border-top: 1px solid #EAEAEA; /* Bordure supérieure légère pour la séparation */
+    margin: 0;
+    border-top: 1px solid #EAEAEA;
 }
 
 .footer .icones {
@@ -30,30 +26,29 @@ html, body {
 
 .footer a {
     display: flex;
-    color: #A1AA9B; /* Vert sauge pour les liens */
-    text-decoration: none; /* Retirer la décoration des liens */
+    color: #A1AA9B;
+    text-decoration: none;
     transition: color 0.3s;
 }
 
 .footer a:hover {
-    color: #9FA480; /* Teinte plus foncée du vert sauge pour le survol */
+    color: #9FA480;
 }
 
-/* Styles pour les liens en ligne */
 .footer p {
     margin: 0;
-    color: #A1AA9B; /* Texte noir pour le pied de page */
-    font-size: 0.9rem; /* Taille de police légèrement réduite pour plus de subtilité */
+    color: #A1AA9B;
+    font-size: 0.9rem;
     display: flex;
-    gap: 10px; /* Espace entre les liens */
+    gap: 10px;
 }
 
 .footer p span {
-    margin: 0 5px; /* Espacement entre les tirets et les liens */
+    margin: 0 5px;
 }
 
 @media (max-width: 768px) {
     .footer {
-        display: none; /* Cacher le footer sur les écrans de 768px ou moins */
+        display: none;
     }
 }

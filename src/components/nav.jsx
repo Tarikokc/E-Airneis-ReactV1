@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { VscSearch, VscThreeBars } from 'react-icons/vsc';
-import { ShoppingCart } from 'lucide-react';
-import '../css/Nav.css';
-import { Link, useNavigate } from 'react-router-dom';
-import Menu from './menu';
+import React, { useState, useRef, useEffect } from "react";
+import { VscSearch, VscThreeBars } from "react-icons/vsc";
+import { ShoppingCart } from "lucide-react";
+import "../css/Nav.css";
+import { Link, useNavigate } from "react-router-dom";
+import Menu from "./menu";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,33 +17,43 @@ function Navbar() {
   };
 
   const handleSearchClick = () => {
-    navigate('/recherche'); // Rediriger vers la page Recherche
+    navigate("/recherche");
   };
 
   const handleCartClick = () => {
-    navigate('/Panier'); // Rediriger vers la page Panier
+    navigate("/Panier");
   };
 
   useEffect(() => {
     const fetchPanierCount = async () => {
-      const userData = JSON.parse(localStorage.getItem('user'));
+      const userData = JSON.parse(localStorage.getItem("user"));
       if (userData && userData.user && userData.user.id) {
-        // Utilisateur connecté : récupérer le nombre depuis le backend (route existante)
         try {
-          const response = await fetch(`http://localhost:8000/api/panier/${userData.user.id}`);
+          const response = await fetch(
+            `http://localhost:8000/api/panier/${userData.user.id}`
+          );
           if (response.ok) {
             const data = await response.json();
-            const count = data.length; 
+            const count = data.length;
             setPanierCount(count);
           } else {
-            console.error("Erreur lors de la récupération du panier:", response.statusText);
+            console.error(
+              "Erreur lors de la récupération du panier:",
+              response.statusText
+            );
           }
         } catch (error) {
-          console.error('Erreur lors de la récupération du nombre d\'articles :', error);
+          console.error(
+            "Erreur lors de la récupération du nombre d'articles :",
+            error
+          );
         }
       } else {
-        const guestCart = JSON.parse(localStorage.getItem('guestCart')) || [];
-        const count = guestCart.reduce((total, item) => total + item.quantite, 0);
+        const guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
+        const count = guestCart.reduce(
+          (total, item) => total + item.quantite,
+          0
+        );
         setPanierCount(count);
       }
     };
@@ -51,20 +61,21 @@ function Navbar() {
     fetchPanierCount();
   }, []);
 
-  // Fonction pour fermer le menu lorsqu'on clique en dehors
   const handleClickOutside = (event) => {
-    if (menuRef.current && !menuRef.current.contains(event.target) && !event.target.closest('.menu-button')) {
+    if (
+      menuRef.current &&
+      !menuRef.current.contains(event.target) &&
+      !event.target.closest(".menu-button")
+    ) {
       setIsMenuOpen(false);
     }
   };
 
   useEffect(() => {
-    // Ajouter l'écouteur d'événements pour les clics en dehors
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
-    // Nettoyer l'écouteur d'événements lors du démontage du composant
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -79,14 +90,9 @@ function Navbar() {
           <VscSearch />
         </button>
 
-        {/* <button className="cart-button" onClick={handleCartClick}>
-          <ShoppingCart />
-        </button> */}
         <button className="cart-button" onClick={handleCartClick}>
           <ShoppingCart />
-          {panierCount > 0 && (
-            <span className="cart-dot"></span> // Afficher un point rouge si panierCount > 0
-          )}
+          {panierCount > 0 && <span className="cart-dot"></span>}
         </button>
         <button className="menu-button" onClick={toggleMenu}>
           <VscThreeBars />

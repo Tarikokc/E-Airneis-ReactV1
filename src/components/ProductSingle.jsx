@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import "../css/ProductSingle.css";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Import des styles
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ProductSingle = () => {
@@ -12,7 +12,7 @@ const ProductSingle = () => {
   const [similarProducts, setSimilarProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [categoryId, setCategoryId] = useState(null); // État pour stocker l'ID de la catégorie
+  const [categoryId, setCategoryId] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const baseUrl = "/img/";
@@ -195,13 +195,13 @@ const ProductSingle = () => {
             <h2>Produits similaires</h2>
             {similarProducts.length > 0 ? (
               <div className="product-grid">
-                {similarProducts.slice(0, 4).map((produit) => ( // Afficher jusqu'à 4 produits
+                {similarProducts.slice(0, 4).map((produit) => (
                   <Link key={produit.productId} to={`/product/${produit.productId}`} className="product-item">
                     {produit.productPhotos && produit.productPhotos.length > 0 && (
                       <img src={baseUrl + produit.productPhotos[0].photoUrl} alt={produit.Nom} />
                     )}
                     <h3>{produit.Nom}</h3>
-                    <p>Prix : {produit.prix} €</p>
+                    <p>{produit.prix} €</p>
                   </Link>
                 ))}
               </div>

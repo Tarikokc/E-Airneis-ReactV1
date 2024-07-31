@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
 
 function AddressForm({ addressType, addressData, onChange }) {
-  const fields = ['street', 'city', 'zipCode', 'country'];
+  const fields = ["street", "city", "zipCode", "country"];
 
   return (
     <div>
-      <h4>{addressType === 'shipping' ? 'Adresse de livraison' : 'Adresse de facturation'}</h4>
+      <h4>
+        {addressType === "shipping"
+          ? "Adresse de livraison"
+          : "Adresse de facturation"}
+      </h4>
       {fields.map((field) => (
         <div key={field}>
           <label htmlFor={`${addressType}.${field}`}>
@@ -14,7 +18,7 @@ function AddressForm({ addressType, addressData, onChange }) {
           <input
             type="text"
             id={`${addressType}.${field}`}
-            name={`${addressType}.${field}`} // Utilisation de la notation pointée pour le nom
+            name={`${addressType}.${field}`}
             value={addressData[field]}
             onChange={onChange} // Pas besoin depasser addressType et field ici
           />

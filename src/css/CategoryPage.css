@@ -1,9 +1,7 @@
-/* Conteneur du titre de la catégorie */
 .category-page {
-  /* Styles pour que la page occupe toute la largeur */
   width: 100%;
-  max-width: 1200px; /* Limite la largeur maximale pour les grands écrans */
-  margin: 0 auto; /* Centre la page horizontalement */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .category-title-container {
@@ -14,17 +12,17 @@
 
 .category-title-container img {
   width: 100%;
-  height: 300px; /* Ajustez la hauteur selon vos besoins */
+  height: 300px;
   object-fit: cover;
 }
-/* Titre et description superposés sur l'image */
+
 .category-title-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Centre le texte sur l'image */
-  color: white; /* Texte blanc */
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour la lisibilité */
+  transform: translate(-50%, -50%);
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .category-title {
@@ -36,39 +34,37 @@
 .category-description {
   font-size: 1.2rem;
 }
-/* Grille des produits */
+
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grille réactive */
-  gap: 2rem; /* Espace entre les cartes */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
 }
 
-/* Cartes de produits */
 .product-card {
-  border: 1px solid #ddd; /* Bordure */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre */
-  overflow: hidden; /* Masque les débordements de l'image */
-  text-decoration: none; /* Supprime le soulignement du lien */
-  color: inherit; /* Hérite de la couleur du texte parent */
-  /* width: 50%; */
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
   justify-items: center;
 }
 
 .product-card img {
-  width: 100%; /* L'image occupe toute la largeur de la carte */
-  height: 200px; /* Hauteur fixe pour les images */
-  object-fit: cover; /* Recadre l'image pour remplir l'espace */
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .product-card-details {
-  padding: 1rem; /* Espace intérieur de la carte */
+  padding: 1rem;
 }
 
 .product-card-title {
-  font-size: 1.2rem; /* Taille de police du titre */
-  margin-bottom: 0.5rem; /* Espace sous le titre */
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .product-card-price {
-  font-weight: bold; /* Prix en gras */
+  font-weight: bold;
 }

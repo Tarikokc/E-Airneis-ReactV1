@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../css/orderHistory.css"; // Assurez-vous d'avoir ce fichier CSS
-import { useNavigate } from 'react-router-dom'; // Importer useNavigate
+import "../css/orderHistory.css"; 
+import { useNavigate } from 'react-router-dom'; 
 
 function OrderHistory() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Obtenir l'objet history
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -24,7 +24,7 @@ function OrderHistory() {
         const response = await axios.get(`http://localhost:8000/api/order/history/${userId}`);
         setOrders(response.data);
       } catch (err) {
-        setError("Erreur lors du chargement des commandes: " + err.message); // Message d'erreur plus détaillé
+        setError("Erreur lors du chargement des commandes: " + err.message); 
       } finally {
         setLoading(false);
       }
@@ -50,7 +50,7 @@ function OrderHistory() {
     return <div className="error-message">{error}</div>;
   }
   const handleOrderClick = (orderId) => {
-    navigate(`/orderDetail/${orderId}`); // Rediriger vers /orderDetail/:orderId
+    navigate(`/orderDetail/${orderId}`); 
   };
 
   return (

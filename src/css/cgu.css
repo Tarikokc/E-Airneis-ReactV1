@@ -1,0 +1,38 @@
+.cgu {
+    padding: 20px;
+    padding-top: 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .cgu h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .cgu section {
+    margin-bottom: 30px;
+  }
+  
+  .cgu h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .cgu h3 {
+    font-size: 1.2em;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .cgu p, .cgu ul {
+    line-height: 1.6;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .cgu ul {
+    padding-left: 20px;
+  }
+  

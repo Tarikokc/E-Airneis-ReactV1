@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import "../css/Contact.css";
-// import ReCAPTCHA from "react-google-recaptcha";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +10,7 @@ const Contact = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [serverErrors, setServerErrors] = useState({}); // Erreurs du serveur
+  const [serverErrors, setServerErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,13 +20,13 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    console.log("Form submission started");  // Log de démarrage de la soumission
+    console.log("Form submission started"); 
   
     setIsLoading(true);
     setServerErrors({}); 
   
     try {
-      console.log("Sending data to the server:", formData);  // Log des données envoyées
+      console.log("Sending data to the server:", formData);
   
       const response = await fetch('http://localhost:8000/api/contact', {
         method: 'POST',
@@ -36,12 +35,12 @@ const Contact = () => {
       });
   
       if (response.ok) {
-        console.log("Server responded with success");  // Log de succès
+        console.log("Server responded with success");
         setSuccess(true);
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
         const data = await response.json();
-        console.log("Server responded with errors:", data);  // Log des erreurs du serveur
+        console.log("Server responded with errors:", data);
         if (data.error) {
           setServerErrors(data.error); 
         } else {
@@ -49,11 +48,11 @@ const Contact = () => {
         }
       }
     } catch (error) {
-      console.error("Network error occurred:", error);  // Log des erreurs réseau
+      console.error("Network error occurred:", error);
       setServerErrors({ general: 'Erreur réseau. Veuillez réessayer.' });
     } finally {
       setIsLoading(false);
-      console.log("Form submission finished");  // Log de fin de soumission
+      console.log("Form submission finished"); 
     }
   };
   
@@ -63,7 +62,7 @@ const Contact = () => {
       <div className='container'>
         <div className='form'>
           <h2>Contactez-nous</h2>
-          <form method='POST' onSubmit={handleSubmit}> 
+          <form className='contact-form' method='POST' onSubmit={handleSubmit}> 
             <div className='box'>
               <div className='label'>
                 <h3>Nom*</h3>
@@ -104,19 +103,11 @@ const Contact = () => {
               </div>
             </div>
             
-            {/* Le composant ReCAPTCHA doit être adapté à votre configuration spécifique
-            <ReCAPTCHA 
-              sitekey="VOTRE_CLE_SITE_RECAPTCHA"
-              onChange={(value) => {
-                // Gérez la valeur de reCAPTCHA ici (si nécessaire)
-              }}
-            /> */}
 
             <button type='submit' disabled={isLoading}>
               {isLoading ? 'Envoi...' : 'Envoyer'}
             </button>
 
-            {/* Affichage des messages d'état */}
             {isLoading && <p>Envoi en cours...</p>}
             {success && <p className="success">Message envoyé avec succès !</p>}
             {serverErrors.general && <p className="error">{serverErrors.general}</p>}

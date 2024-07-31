@@ -87,7 +87,7 @@ const RecherchePage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     fetchData();
-    setShowFilters(false); // Masquer les filtres après la recherche
+    setShowFilters(false);
   };
 
   const handleToggleFilters = () => {

@@ -21,7 +21,6 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
   return (
     <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
       <ul>
-        {/* Affichage conditionnel des liens */}
         {!isLoggedIn ? (
           <>
             <li><Link to="/login" onClick={toggleMenu}>Connexion</Link></li>
@@ -30,18 +29,16 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
         ) : (
           <>
             <li><Link to="/AccountSettings" onClick={toggleMenu}>Mes paramètres</Link></li>
-          </>
+            <li><Link to="/orderHistory" onClick={toggleMenu}>Mes commandes</Link></li></>
         )}
 
-        {/* <li><Link to="/recherche" onClick={toggleMenu}>Recherche</Link></li> */}
-        <li><Link to="/orderHistory" onClick={toggleMenu}>Mes commandes</Link></li>
         <li><Link to="/cgu" onClick={toggleMenu}>CGU</Link></li>
         <li><Link to="/legal" onClick={toggleMenu}>Mentions légales</Link></li>
         <li><Link to="/contact" onClick={toggleMenu}>Contact</Link></li>
         <li><Link to="/about" onClick={toggleMenu}>À propos d’ÀIRNEIS</Link></li>
 
         {isLoggedIn && (
-          <li onClick={handleLogout}>Déconnexion</li>
+          <li onClick={handleLogout} id="logout" >Déconnexion</li>
         )}
           
         

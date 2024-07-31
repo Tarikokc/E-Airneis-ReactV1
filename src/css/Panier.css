@@ -1,14 +1,12 @@
-/* Panier.css */
 .panier {
   margin: 0 auto;
   padding: 2rem;
-  color: #000000; /* Texte noir */
+  color: #000000;
   width: 100%;
-  max-width: 1200px; /* Largeur maximale */
-  background: #dee1dd; /* Fond gris clair */
+  max-width: 1200px;
+  background: #dee1dd;
 }
 
-/* Liste des produits dans le panier */
 .liste-produits {
   list-style: none;
   padding: 0;
@@ -17,18 +15,17 @@
   gap: 1rem;
 }
 
-/* Produit dans le panier */
 .produit-panier {
   display: flex;
   align-items: center;
-  border: 1px solid #ddd; /* Bordure douce */
-  border-radius: 8px; /* Coins arrondis modernes */
-  background-color: #ffffff; /* Fond blanc pour les articles */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
 }
 
-/* Image du produit */
 .produit-panier img {
   width: 100%;
   max-width: 120px;
@@ -36,54 +33,51 @@
   object-fit: cover;
   margin-right: 1rem;
   border-radius: 8px;
-  background-color: #F2E9E4; /* Couleur de fond pour les images */
+  background-color: #F2E9E4;
 }
 
-/* Détails du produit */
 .details-produit {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
-/* Nom du produit */
 .details-produit h3 {
   margin: 0 0 0.5rem;
   font-size: 1rem;
   font-weight: bold;
-  color: #000000; /* Texte noir */
+  color: #000000;
 }
 
-/* Description du produit */
 .details-produit p {
   margin: 0;
   font-size: 0.875rem;
-  color: #4A4A4A; /* Texte gris foncé */
+  color: #4A4A4A;
 }
 
-/* Quantité */
 .quantite {
   display: flex;
   align-items: center;
   margin-top: 0.5rem;
+  flex-wrap: wrap;
 }
 
-/* Boutons de quantité */
 .quantite button {
   padding: 0.5rem 1rem;
-  background-color: #A1AA9B; /* Vert sauge */
-  color: #FFFFFF; /* Texte blanc */
+  background-color: #A1AA9B;
+  color: #FFFFFF;
   border: none;
-  border-radius: 8px; /* Coins arrondis modernes */
+  border-radius: 8px;
   cursor: pointer;
   font-size: 0.875rem;
-  transition: background-color 0.3s, box-shadow 0.3s; /* Transition douce */
+  transition: background-color 0.3s, box-shadow 0.3s;
   margin: 0 0.5rem;
 }
 
 .quantite button:hover {
-  background-color: #889480; /* Vert sauge plus foncé */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  background-color: #889480;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .quantite span {
@@ -92,42 +86,44 @@
   font-weight: bold;
 }
 
-/* Total */
+.qte-bin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .total {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 0.5rem;
-  border-top: 2px solid #A1AA9B; /* Bordure supérieure vert sauge */
+  border-top: 2px solid #A1AA9B;
   padding-top: 1rem;
 }
 
-/* Total montant */
 .total h3, .total p {
   margin: 0;
   font-size: 1rem;
-  color: #000000; /* Texte noir */
+  color: #000000;
 }
 
-/* Bouton de commande */
 .passer-commande {
   padding: 0.8rem 1.5rem;
-  background-color: #A1AA9B; /* Vert sauge */
-  color: #FFFFFF; /* Texte blanc */
+  background-color: #A1AA9B;
+  color: #FFFFFF;
   border: none;
-  border-radius: 8px; /* Coins arrondis modernes */
+  border-radius: 8px;
   cursor: pointer;
   font-size: 0.875rem;
-  transition: background-color 0.3s, box-shadow 0.3s; /* Transition douce */
+  transition: background-color 0.3s, box-shadow 0.3s;
   align-self: center;
 }
 
 .passer-commande:hover {
-  background-color: #889480; /* Vert sauge plus foncé */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  background-color: #889480;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Styles responsives */
 @media (min-width: 768px) {
   .panier {
     display: grid;
@@ -146,7 +142,7 @@
 
 @media (max-width: 768px) {
   .panier {
-    padding: 1rem;
+    padding-top: 60px;
   }
 
   .produit-panier {
@@ -158,11 +154,15 @@
     margin-bottom: 1rem;
   }
 
-  .details-produit {
-    align-items: flex-start;
+  .quantite {
+    margin: 0.5rem 0;
   }
 
-  .quantite {
-    margin-top: 0.5rem;
+  .details-produit {
+    width: 100%;
+  }
+
+  .passer-commande {
+    margin-top: 20px;
   }
 }

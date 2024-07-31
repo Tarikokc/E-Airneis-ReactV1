@@ -16,15 +16,16 @@ import '@hotwired/stimulus'
 import OrderHistory from './components/orderHistory.jsx';
 import OrderDetail from './components/OrderDetail.jsx';
 import AccountSettings from './components/AccountSettings.jsx';
-// import Checkout from './components/StripePayment.jsx';
 import Checkout from './components/StripePayment.jsx';
 import Confirmation from './components/Confirmation';
 import Panier from './components/Panier.jsx';
+import Legal from './components/legal.jsx';
+import Cgu from './components/cgu.jsx';
+import About from './components/about.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const stripePromise = loadStripe('pk_test_51PfKZmKixfMhfPrWZ2P1UQnTDA7ohWcfHkcDWiIc6tniqXtBo22m28m8TQAGZqHuReZ0Uo8dWUt8CSrnzI4IEONR00iLw1yFqJ'); // Remplacez par votre clé publique
-
+const stripePromise = loadStripe('pk_test_51PfKZmKixfMhfPrWZ2P1UQnTDA7ohWcfHkcDWiIc6tniqXtBo22m28m8TQAGZqHuReZ0Uo8dWUt8CSrnzI4IEONR00iLw1yFqJ');
 
 function App() {
   return (
@@ -48,10 +49,14 @@ function App() {
               <Route path="/confirmation" element={<Confirmation />} />
               <Route path="/Checkout" element={<Elements stripe={stripePromise}><Checkout /></Elements>} />
               <Route path="/Panier" element={<Panier />} />
+              <Route path="/legal" element={<Legal />} />
+              <Route path="/cgu" element={<Cgu />} />
+              <Route path="/about" element={<About />} />
+
         
             </Routes>
             <Footer />
-            <ToastContainer /> {/* Placement du ToastContainer ici */}
+            <ToastContainer />
 
           </header>
         </div>

@@ -8,13 +8,12 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     
-    // Simple validation
     if (!email || !password) {
       setError('Veuillez remplir tous les champs.');
       return;
@@ -30,13 +29,9 @@ const LoginForm = () => {
 
       console.log('Login successful', response.data);
 
-      // Stocker le token dans le localStorage (si votre backend renvoie un token)
-      localStorage.setItem('token', response.data.token); // Adaptez la clé si nécessaire
-
-      // Stocker les informations de l'utilisateur (si votre backend les renvoie)
+      localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
 
-      // Rediriger l'utilisateur vers la page d'accueil
       navigate('/');
     } catch (error) {
       console.error('Login failed', error.response?.data || error.message);

@@ -1,4 +1,3 @@
-/* Styles généraux */
 * {
   font-family: 'Montserrat', sans-serif;
 }
@@ -10,7 +9,20 @@
   width: 100%;
 }
 
-/* Navigation */
+.carousel-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.carousel-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .navigation {
   list-style: none;
   margin: 0;
@@ -28,28 +40,10 @@
   transition: all 0.3s ease;
 }
 
-.navigation a:hover {
-  color: #007bff;
-}
-
-/* Carrousel principal */
-.carousel-container {
-  margin-bottom: 30px;
-  width: 100%;
-  height: 400px;
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-}
-
 #slogan {
-  padding: 40px;
+  padding-top: 60px;
 }
 
-/* Grille de catégories */
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -70,12 +64,10 @@
 
 .category-item img {
   width: 100%;
-  height: 300px;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-/* Grille de produits */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -100,12 +92,10 @@
 
 .product-item img {
   width: 100%;
-  height: 300px;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-/* Styles pour le popup */
 .popup {
   position: fixed;
   top: 50%;
@@ -143,18 +133,9 @@
   font-size: 16px;
 }
 
-/* Media Queries pour les écrans plus petits */
 @media (max-width: 1200px) {
   .home-page {
-    padding: 15px;
-  }
-
-  .carousel-slide img {
-    height: 350px;
-  }
-
-  .category-item img, .product-item img {
-    height: 250px;
+    padding-top: 60px;
   }
 
   #slogan {
@@ -171,6 +152,10 @@
 }
 
 @media (max-width: 992px) {
+  .carousel-container {
+    height: 300px;
+  }
+
   .navigation {
     flex-direction: column;
     align-items: flex-start;
@@ -178,14 +163,6 @@
 
   .navigation a {
     padding: 10px;
-  }
-
-  .carousel-slide img {
-    height: 300px;
-  }
-
-  .category-item img, .product-item img {
-    height: 200px;
   }
 
   #slogan {
@@ -203,14 +180,14 @@
 }
 
 @media (max-width: 768px) {
+  .carousel-container {
+    height: 200px;
+  }
+
   .category-grid, .product-grid {
     grid-template-columns: 1fr;
     gap: 20px;
-    padding: 0 10px;
-  }
-
-  .carousel-slide img {
-    height: 250px;
+    padding: 0 30px;
   }
 
   #slogan {

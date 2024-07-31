@@ -1,41 +1,33 @@
-/* Style général du formulaire */
 form {
-    width: 400px; /* Ajustez la largeur selon vos besoins */
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  /* Style de l'élément PaymentElement */
-  .StripeElement {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 3px;
-  }
-  
-  /* Style du bouton */
- #payer {
-    background-color: #4CAF50; /* Couleur verte */
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%; /* Prend toute la largeur du formulaire */
-    margin-top: 10px; /* Espace entre le formulaire et le bouton */
-  }
-  
-  /* Style du bouton désactivé */
- #payer:disabled {
-    background-color: #ddd; 
-    cursor: not-allowed;
-  }
-  
-  /* Style du message d'erreur */
-  .error-message { /* Ajoutez cette classe à la div affichant l'erreur */
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.StripeElement {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+#payer {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#payer:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}

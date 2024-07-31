@@ -1,13 +1,15 @@
-/* App.css */
 @font-face {
   font-family: 'Montserrat';
   src: url('../public/assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'HomemadeApple';
+  src: url('../public/assets/fonts/HomemadeApple-Regular.ttf') format('truetype');
+}
 
 .App {
   text-align: center;
-
 }
 
 .App-logo {
@@ -22,7 +24,6 @@ h2 {
   color: #727E66;
   text-align: center;
   font-weight: bold;
-  /* Titre plus prononcé */
 }
 
 h3 {
@@ -34,7 +35,7 @@ h3 {
   padding : 10px;
 }
 
-div {
+div, p {
   font-family: 'Montserrat', sans-serif;
   color: #000000;
   text-align: center;  
@@ -48,30 +49,28 @@ div {
 }
 
 .App-header {
-  background-color: #F6F4F1; /* Fond blanc */
+  background-color: #F6F4F1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #232521; /* Texte noir */
+  color: #232521;
 }
 
 .App-link {
-  color: #B2AC88; /* Vert sauge */
+  color: #B2AC88;
 }
 
 a {
-  text-decoration: none; /* Supprimer le soulignement par défaut */
-  color: inherit; /* Utiliser la couleur héritée du parent */
+  text-decoration: none;
+  color: inherit;
 }
 
 a:hover {
-  /* text-decoration: underline; Ajouter un soulignement au survol */
-  color: #927e0e; /* Couleur vert sauge au survol */
+  color: #927e0e;
 }
-
 
 @keyframes App-logo-spin {
   from {
@@ -90,12 +89,12 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px 15px 30px;
-  background-color: #dee1dd; /* Fond blanc */
+  background-color: #dee1dd;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 60px;
   width: 100%;
-  margin: 0; /* Assurez-vous que le footer est correctement positionné sans marge */
-  border-top: 1px solid #EAEAEA; /* Bordure supérieure légère pour la séparation */
+  margin: 0;
+  border-top: 1px solid #EAEAEA;
 }
 
 .footer .icones {
@@ -105,24 +104,23 @@ a:hover {
 
 .footer a {
   display: flex;
-  color: #A1AA9B; /* Vert sauge pour les liens */
-  text-decoration: none; /* Retirer la décoration des liens */
+  color: #A1AA9B;
+  text-decoration: none;
   transition: color 0.3s;
 }
 
 .footer a:hover {
-  color: #000000; /* Teinte plus foncée du vert sauge pour le survol */
+  color: #000000;
 }
 
-/* Styles pour les liens en ligne */
 .footer p {
   margin: 0;
-  color: #A1AA9B; /* Texte noir pour le pied de page */
-  font-size: 0.9rem; /* Taille de police légèrement réduite pour plus de subtilité */
+  color: #A1AA9B;
+  font-size: 0.9rem;
   display: flex;
-  gap: 10px; /* Espace entre les liens */
+  gap: 10px;
 }
 
 .footer p span {
-  margin: 0 5px; /* Espacement entre les tirets et les liens */
+  margin: 0 5px;
 }

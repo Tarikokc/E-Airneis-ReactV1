@@ -5,7 +5,7 @@ import { PaymentElement, useStripe, useElements, Elements } from '@stripe/react-
 import { loadStripe } from '@stripe/stripe-js';
 import '../css/StripeForm.css';
 import Confirmation from './Confirmation';
-import { useLocation } from 'react-router-dom'; // Import useLocation
+import { useLocation } from 'react-router-dom'; 
 
 const stripePromise = loadStripe('pk_test_51PfKZmKixfMhfPrWZ2P1UQnTDA7ohWcfHkcDWiIc6tniqXtBo22m28m8TQAGZqHuReZ0Uo8dWUt8CSrnzI4IEONR00iLw1yFqJ');
 
@@ -22,13 +22,13 @@ function Checkout() {
   const [country, setCountry] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const location = useLocation();
-  const [totalTTC, setTotalTTC] = useState(0); // Nouvel état local pour stocker le total
+  const [totalTTC, setTotalTTC] = useState(0);
 
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState(null);
   const [clientSecret, setClientSecret] = useState(null);
-  const [showConfirmation, setShowConfirmation] = useState(false); // Nouvel état
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
 
   const fieldData = [
@@ -64,14 +64,14 @@ function Checkout() {
       const parsedTotalTTC = parseFloat(storedTotalTTC);
       setTotalTTC(parsedTotalTTC);
 
-      console.log("Montant total du panier (avant requête):", parsedTotalTTC); // Log avant la requête
+      console.log("Montant total du panier (avant requête):", parsedTotalTTC);
 
       fetch('http://localhost:8000/create-payment-intent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ totalTTC: parsedTotalTTC }) // Utiliser le total parsé
+        body: JSON.stringify({ totalTTC: parsedTotalTTC }) 
       })
         .then(res => res.json())
         .then(data => {
@@ -88,9 +88,9 @@ function Checkout() {
           console.error("Erreur réseau:", error);
         });
     } else {
-      console.error("Total TTC non trouvé dans sessionStorage"); // Log si le total est manquant
+      console.error("Total TTC non trouvé dans sessionStorage");
     }
-  }, []); // Pas de dépendance sur totalTTC car il est récupéré depuis sessionStorage
+  }, []); 
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -115,7 +115,7 @@ function Checkout() {
         const data = await response.json();
         setUserData(data);
 
-        // Initialiser les champs avec les données existantes SI l'utilisateur choisit de les utiliser
+       
         if (useExistingData && data) {
           setFirstName(data.firstName || '');
           setLastName(data.lastName || '');
@@ -126,10 +126,10 @@ function Checkout() {
           setPhoneNumber(data.phoneNumber || '');
         }
 
-        setStep(2); // Passer à l'étape suivante après avoir récupéré les données
+        setStep(2); 
       } catch (error) {
         console.error('Error fetching user data:', error);
-        // Gérer l'erreur (par exemple, afficher un message à l'utilisateur)
+       
       }
     };
 
@@ -139,7 +139,7 @@ function Checkout() {
   const handleSubmit = async (event) => {
     event.preventDefault();
   
-    // Simulation de succès de paiement
+   
     navigate('/confirmation'); 
   };
 
@@ -148,8 +148,8 @@ function Checkout() {
       {step === 1 ? (
         <Login onNext={setStep} />
       ) : (
-        <> {/* Added a fragment to wrap the form and Confirmation components */}
-          {!showConfirmation && ( // Show form only if confirmation is not visible
+        <>
+          {!showConfirmation && (
             <Elements stripe={stripePromise} options={{ clientSecret, appearance }}>
               <form onSubmit={handleSubmit} className="checkout-form">
                 <h2>Étape 2 : Informations de livraison et paiement</h2>
